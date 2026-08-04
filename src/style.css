@@ -1,0 +1,377 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+header h1 {
+  font-size: 2.2rem;
+  color: #2b6cb0;
+  margin-bottom: 6px;
+}
+header p {
+  color: #4a5568;
+}
+
+.filters {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.filter-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+select,
+input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  min-width: 130px;
+}
+
+button {
+  padding: 8px 16px;
+  background: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover {
+  background: #2c5282;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background: #e53e3e;
+}
+.reset-btn:hover {
+  background: #c53030;
+}
+
+.selected-place-bar,
+.sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  color: #276749;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.sort-bar {
+  background: #ebf8ff;
+  border-color: #90cdf4;
+  color: #2b6cb0;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: #c53030;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.clear-btn:hover {
+  background: #fed7d7;
+}
+
+.weather-bar {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-size: 0.95rem;
+}
+.weather-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.weather-date {
+  font-weight: 700;
+}
+.weather-main {
+  font-weight: 600;
+  color: #2b6cb0;
+}
+.weather-note {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+.results-info {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 12px;
+}
+
+.trails-list {
+  display: grid;
+  gap: 16px;
+}
+
+.trail-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 5px solid #4299e1;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.trail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.trail-card h3 {
+  font-size: 1.15rem;
+  color: #2d3748;
+}
+
+.diff-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.diff-T {
+  background: #c6f6d5;
+  color: #276749;
+}
+.diff-E {
+  background: #feebc8;
+  color: #c05621;
+}
+.diff-EE {
+  background: #fed7d7;
+  color: #c53030;
+}
+.diff-EEA {
+  background: #e9d8fd;
+  color: #6b46c1;
+}
+
+.trail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+.distance {
+  background: #ebf8ff;
+  color: #2b6cb0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.card-weather {
+  font-size: 0.9rem;
+  color: #2d3748;
+  background: #f7fafc;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.trail-card p {
+  font-size: 0.9rem;
+  color: #718096;
+}
+.card-hint {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #4299e1;
+  font-weight: 500;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  background: white;
+  border-radius: 12px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 28px 0;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.suggestion-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.95rem;
+}
+.suggestion-item:hover {
+  background: #ebf8ff;
+}
+
+.credits {
+  text-align: center;
+  margin-top: 48px;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #4a5568;
+  border-top: 1px solid #e2e8f0;
+}
+.credits strong {
+  color: #2b6cb0;
+}
+.card-weather.loading {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.search-btn {
+  background: #3182ce;
+  color: white;
+  font-weight: 700;
+  padding: 9px 20px;
+}
+.search-btn:hover {
+  background: #2b6cb0;
+}
+
+.error-field input,
+.error-field select {
+  border-color: #e53e3e !important;
+  background: #fff5f5;
+}
+
+.error-field label {
+  color: #e53e3e;
+}
+
+
+/* Search button */
+.search-btn {
+  background: #3182ce;
+  color: white;
+  font-weight: 700;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #2b6cb0;
+}
+
+/* Red highlight for missing required fields */
+.error-field input,
+.error-field select {
+  border-color: #e53e3e !important;
+  background-color: #fff5f5;
+}
+
+.error-field label {
+  color: #e53e3e;
+}
+
+/* Day 4 - Recommended */
+.trail-card.recommended {
+  border-left: 5px solid #38a169;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.recommended-badge {
+  background: #c6f6d5;
+  color: #276749;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.reason {
+  font-size: 0.9rem;
+  color: #2b6cb0;
+  font-weight: 600;
+  margin: 6px 0;
+}
+
+.reason {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin: 6px 0 4px;
+}
