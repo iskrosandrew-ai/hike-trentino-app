@@ -30,8 +30,6 @@ const translations = {
     elevation: "Elevation",
     ascending: "Ascending ↑",
     descending: "Descending ↓",
-    better: "Better first",
-    worse: "Worse first",
     startingFrom: "Starting from",
     clear: "Clear",
     weatherAtDeparture: "Weather at departure place",
@@ -44,6 +42,7 @@ const translations = {
     credits: "Hike Trentino · Created by Andrew Iskros",
     weatherSource: "Weather data: Open-Meteo · Trail info: Visit Trentino",
     drive: "km drive",
+    straightLine: "km straight-line",
     greatWeather: "Great weather",
     goodWeather: "Good weather",
     close: "Close",
@@ -76,8 +75,6 @@ const translations = {
     elevation: "Dislivello",
     ascending: "Crescente ↑",
     descending: "Decrescente ↓",
-    better: "Dal migliore",
-    worse: "Dal peggiore",
     startingFrom: "Partenza da",
     clear: "Cancella",
     weatherAtDeparture: "Meteo nel luogo di partenza",
@@ -90,6 +87,7 @@ const translations = {
     credits: "Hike Trentino · Creato da Andrew Iskros",
     weatherSource: "Dati meteo: Open-Meteo · Info sentieri: Visit Trentino",
     drive: "km in auto",
+    straightLine: "km in linea d'aria",
     greatWeather: "Ottimo meteo",
     goodWeather: "Buon meteo",
     close: "Vicino",
@@ -122,8 +120,6 @@ const translations = {
     elevation: "Höhenmeter",
     ascending: "Aufsteigend ↑",
     descending: "Absteigend ↓",
-    better: "Bessere zuerst",
-    worse: "Schlechtere zuerst",
     startingFrom: "Start von",
     clear: "Löschen",
     weatherAtDeparture: "Wetter am Startort",
@@ -136,6 +132,7 @@ const translations = {
     credits: "Hike Trentino · Erstellt von Andrew Iskros",
     weatherSource: "Wetterdaten: Open-Meteo · Weginfo: Visit Trentino",
     drive: "km Fahrt",
+    straightLine: "km Luftlinie",
     greatWeather: "Tolles Wetter",
     goodWeather: "Gutes Wetter",
     close: "Nah",
@@ -233,7 +230,6 @@ async function getDrivingDistanceKm(lat1, lon1, lat2, lon2) {
     console.warn('Driving distance failed', err)
   }
 
-  // Fallback only used internally for sorting, not shown to user
   const km = getStraightLineKm(lat1, lon1, lat2, lon2)
   distanceCache[key] = { km, isDriving: false }
   return distanceCache[key]
@@ -371,6 +367,7 @@ async function doSearch() {
     return { ...trail, distanceFromDeparture: straight }
   })
 
+  // First rough filter (we will refine with driving distance later)
   list = list.filter(t => {
     if (filters.difficulty !== 'all' && t.difficulty !== filters.difficulty) return false
     if (filters.minElevation && t.elevationGainM < Number(filters.minElevation)) return false
@@ -406,16 +403,15 @@ async function doSearch() {
     t.reason = getRecommendationReason(t)
   })
 
-  // Only keep trails where we got real driving distance
-  let filtered = candidates.filter(t => t.isDrivingDistance)
-
+  // Apply driving distance filter
+  let filtered = candidates
   if (filters.maxDistance) {
-    filtered = filtered.filter(t => t.distanceKmValue <= Number(filters.maxDistance))
+    filtered = candidates.filter(t => t.distanceKmValue <= Number(filters.maxDistance))
   }
 
   // Final sort
   if (sortBy === 'weather') {
-    filtered.sort((a, b) => sortDir === 'asc' ? b.weatherScore - a.weatherScore : a.weatherScore - b.weatherScore)
+    filtered.sort((a, b) => sortDir === 'asc' ? a.weatherScore - b.weatherScore : b.weatherScore - a.weatherScore)
   } else if (sortBy === 'distance') {
     filtered.sort((a, b) => sortDir === 'asc' ? a.distanceKmValue - b.distanceKmValue : b.distanceKmValue - a.distanceKmValue)
   } else if (sortBy === 'elevation') {
@@ -519,29 +515,18 @@ function render() {
     ).join('')}
   `
 
-  // Dynamic order options
-  const orderOptions = sortBy === 'weather'
-    ? `
-      <option value="asc">${t('better')}</option>
-      <option value="desc">${t('worse')}</option>
-    `
-    : `
-      <option value="asc">${t('ascending')}</option>
-      <option value="desc">${t('descending')}</option>
-    `
-
   app.innerHTML = `
     <div class="container">
       <div class="lang-switcher">
-        <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">
-          <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"> EN
-        </button>
-        <button class="lang-btn ${lang === 'it' ? 'active' : ''}" data-lang="it">
-          <img src="https://flagcdn.com/w40/it.png" alt="IT" class="flag-icon"> IT
-        </button>
-        <button class="lang-btn ${lang === 'de' ? 'active' : ''}" data-lang="de">
-          <img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag-icon"> DE
-        </button>
+      <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">
+      <img src="https://flagcdn.com/w40/gb.png" alt="English" class="flag-icon"> EN
+    </button>
+    <button class="lang-btn ${lang === 'it' ? 'active' : ''}" data-lang="it">
+      <img src="https://flagcdn.com/w40/it.png" alt="Italiano" class="flag-icon"> IT
+    </button>
+    <button class="lang-btn ${lang === 'de' ? 'active' : ''}" data-lang="de">
+      <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="flag-icon"> DE
+    </button>
       </div>
 
       <header>
@@ -573,7 +558,7 @@ function render() {
         </div>
 
         <div class="filter-group">
-          <label>🚗 ${t('maxDistance')}</label>
+        <label>🚗 ${t('maxDistance')}</label>
           <input type="number" id="maxDistance" placeholder="e.g. 25" value="${filters.maxDistance}" min="1" max="80">
         </div>
 
@@ -601,7 +586,8 @@ function render() {
         <div class="filter-group">
           <label>${t('order')}</label>
           <select id="sortDir">
-            ${orderOptions}
+            <option value="asc">${t('ascending')}</option>
+            <option value="desc">${t('descending')}</option>
           </select>
         </div>
 
@@ -654,6 +640,9 @@ function render() {
         ` : results.map(trail => {
           const w = trail.dayWeather
           const desc = w ? getWeatherDescription(w.weather_code) : null
+          const distLabel = trail.isDrivingDistance
+            ? `🚗 ${trail.distanceKmValue.toFixed(1)} ${t('drive')}`
+            : `📏 ${trail.distanceKmValue.toFixed(1)} ${t('straightLine')}`
           return `
             <div class="trail-card" data-url="${trail.guideUrl}">
               <div class="card-header">
@@ -662,9 +651,9 @@ function render() {
               </div>
               <div class="trail-meta">
                 <span>📍 ${trail.area}</span>
-                
+                <span>📏 ${trail.distanceKm} km</span>
                 <span>⬆️ ${trail.elevationGainM} m</span>
-                <span class="distance">🚗 ${trail.distanceKmValue.toFixed(1)} ${t('drive')}</span>
+                <span class="distance">${distLabel}</span>
               </div>
               ${w ? `
                 <div class="card-weather">
@@ -717,9 +706,6 @@ function render() {
   document.getElementById('sortBy').addEventListener('change', e => {
     sortBy = e.target.value
     errors.sortBy = false
-    // Reset order when changing sort type
-    sortDir = 'asc'
-    render()
   })
 
   document.getElementById('sortDir').value = sortDir
