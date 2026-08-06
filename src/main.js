@@ -1,5 +1,6 @@
 import './style.css'
 import { trails } from './data/trails.js'
+import { supabase } from './supabase.js'
 
 const app = document.querySelector('#app')
 
@@ -30,6 +31,8 @@ const translations = {
     elevation: "Elevation",
     ascending: "Ascending ↑",
     descending: "Descending ↓",
+    better: "Better first",
+    worse: "Worse first",
     startingFrom: "Starting from",
     clear: "Clear",
     weatherAtDeparture: "Weather at departure place",
@@ -42,13 +45,27 @@ const translations = {
     credits: "Hike Trentino · Created by Andrew Iskros",
     weatherSource: "Weather data: Open-Meteo · Trail info: Visit Trentino",
     drive: "km drive",
-    straightLine: "km straight-line",
     greatWeather: "Great weather",
     goodWeather: "Good weather",
     close: "Close",
     nearby: "Nearby",
     niceElevation: "Nice elevation",
-    matchesFilters: "Matches your filters"
+    matchesFilters: "Matches your filters",
+    signIn: "Sign in",
+    logout: "Logout",
+    createAccount: "Create account",
+    email: "Email",
+    password: "Password",
+    firstName: "First name",
+    lastName: "Last name",
+    city: "City (optional)",
+    noAccount: "Don't have an account?",
+    hasAccount: "Already have an account?",
+    pleaseWait: "Please wait...",
+    forgotPassword: "Forgot password?",
+    resetPassword: "Reset password",
+    sendResetLink: "Send reset link",
+    backToLogin: "Back to Sign in"
   },
   it: {
     title: "Hike Trentino",
@@ -75,6 +92,8 @@ const translations = {
     elevation: "Dislivello",
     ascending: "Crescente ↑",
     descending: "Decrescente ↓",
+    better: "Dal migliore",
+    worse: "Dal peggiore",
     startingFrom: "Partenza da",
     clear: "Cancella",
     weatherAtDeparture: "Meteo nel luogo di partenza",
@@ -87,13 +106,27 @@ const translations = {
     credits: "Hike Trentino · Creato da Andrew Iskros",
     weatherSource: "Dati meteo: Open-Meteo · Info sentieri: Visit Trentino",
     drive: "km in auto",
-    straightLine: "km in linea d'aria",
     greatWeather: "Ottimo meteo",
     goodWeather: "Buon meteo",
     close: "Vicino",
     nearby: "Nelle vicinanze",
     niceElevation: "Bel dislivello",
-    matchesFilters: "Corrisponde ai filtri"
+    matchesFilters: "Corrisponde ai filtri",
+    signIn: "Accedi",
+    logout: "Esci",
+    createAccount: "Crea account",
+    email: "Email",
+    password: "Password",
+    firstName: "Nome",
+    lastName: "Cognome",
+    city: "Città (opzionale)",
+    noAccount: "Non hai un account?",
+    hasAccount: "Hai già un account?",
+    pleaseWait: "Attendere...",
+    forgotPassword: "Password dimenticata?",
+    resetPassword: "Reimposta password",
+    sendResetLink: "Invia link di reset",
+    backToLogin: "Torna al login"
   },
   de: {
     title: "Hike Trentino",
@@ -120,6 +153,8 @@ const translations = {
     elevation: "Höhenmeter",
     ascending: "Aufsteigend ↑",
     descending: "Absteigend ↓",
+    better: "Bessere zuerst",
+    worse: "Schlechtere zuerst",
     startingFrom: "Start von",
     clear: "Löschen",
     weatherAtDeparture: "Wetter am Startort",
@@ -132,18 +167,44 @@ const translations = {
     credits: "Hike Trentino · Erstellt von Andrew Iskros",
     weatherSource: "Wetterdaten: Open-Meteo · Weginfo: Visit Trentino",
     drive: "km Fahrt",
-    straightLine: "km Luftlinie",
     greatWeather: "Tolles Wetter",
     goodWeather: "Gutes Wetter",
     close: "Nah",
     nearby: "In der Nähe",
     niceElevation: "Schöne Höhenmeter",
-    matchesFilters: "Entspricht den Filtern"
+    matchesFilters: "Entspricht den Filtern",
+    signIn: "Anmelden",
+    logout: "Abmelden",
+    createAccount: "Konto erstellen",
+    email: "E-Mail",
+    password: "Passwort",
+    firstName: "Vorname",
+    lastName: "Nachname",
+    city: "Stadt (optional)",
+    noAccount: "Noch kein Konto?",
+    hasAccount: "Bereits ein Konto?",
+    pleaseWait: "Bitte warten...",
+    forgotPassword: "Passwort vergessen?",
+    resetPassword: "Passwort zurücksetzen",
+    sendResetLink: "Reset-Link senden",
+    backToLogin: "Zurück zum Login"
   }
 }
 
 // ---------- State ----------
 let lang = 'en'
+let currentUser = null
+let showAuthModal = false
+let authMode = 'login' // 'login' | 'signup' | 'forgot'
+let authEmail = ''
+let authPassword = ''
+let authFirstName = ''
+let authLastName = ''
+let authCity = ''
+let authError = ''
+let authLoading = false
+let authMessage = ''
+
 let filters = {
   difficulty: 'all',
   maxDistance: '',
@@ -178,10 +239,6 @@ const distanceCache = {}
 // ---------- Helpers ----------
 function t(key) {
   return translations[lang][key] || translations.en[key] || key
-}
-
-function getTodayISO() {
-  return new Date().toISOString().slice(0, 10)
 }
 
 function getNext10Days() {
@@ -221,7 +278,7 @@ async function getDrivingDistanceKm(lat1, lon1, lat2, lon2) {
     const res = await fetch(url)
     const data = await res.json()
 
-    if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+    if (data.code === 'Ok' && data.routes?.[0]) {
       const km = data.routes[0].distance / 1000
       distanceCache[key] = { km, isDriving: true }
       return distanceCache[key]
@@ -278,7 +335,7 @@ function calcRecommendationScore(trail) {
   let elevationScore = 70
   if (trail.elevationGainM >= 300 && trail.elevationGainM <= 900) elevationScore = 90
   else if (trail.elevationGainM > 1200) elevationScore = 50
-  return Math.round((weatherScore * 0.50) + (distanceScore * 0.35) + (elevationScore * 0.15))
+  return Math.round((weatherScore * 0.5) + (distanceScore * 0.35) + (elevationScore * 0.15))
 }
 
 function getRecommendationReason(trail) {
@@ -312,6 +369,118 @@ function cacheKey(lat, lon, date) {
   return `${lat.toFixed(3)},${lon.toFixed(3)},${date}`
 }
 
+// ---------- Auth ----------
+async function checkUser() {
+  const { data: { user } } = await supabase.auth.getUser()
+  currentUser = user
+  render()
+}
+
+async function handleLogin() {
+  authLoading = true
+  authError = ''
+  authMessage = ''
+  render()
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: authEmail,
+    password: authPassword
+  })
+
+  authLoading = false
+
+  if (error) {
+    authError = error.message
+    render()
+    return
+  }
+
+  showAuthModal = false
+  resetAuthForm()
+  await checkUser()
+}
+
+async function handleSignup() {
+  if (!authFirstName.trim() || !authLastName.trim()) {
+    authError = 'First name and Last name are required'
+    render()
+    return
+  }
+
+  authLoading = true
+  authError = ''
+  authMessage = ''
+  render()
+
+  const { data, error } = await supabase.auth.signUp({
+    email: authEmail,
+    password: authPassword,
+    options: {
+      data: {
+        first_name: authFirstName.trim(),
+        last_name: authLastName.trim(),
+        city: authCity.trim() || null
+      }
+    }
+  })
+
+  authLoading = false
+
+  if (error) {
+    authError = error.message
+    render()
+    return
+  }
+
+  authMessage = 'Account created! Please check your email to confirm.'
+  authMode = 'login'
+  render()
+}
+
+async function handleForgotPassword() {
+  if (!authEmail.trim()) {
+    authError = 'Please enter your email'
+    render()
+    return
+  }
+
+  authLoading = true
+  authError = ''
+  authMessage = ''
+  render()
+
+  const { error } = await supabase.auth.resetPasswordForEmail(authEmail, {
+    redirectTo: window.location.origin
+  })
+
+  authLoading = false
+
+  if (error) {
+    authError = error.message
+    render()
+    return
+  }
+
+  authMessage = 'Password reset link sent! Check your email.'
+  render()
+}
+
+async function handleLogout() {
+  await supabase.auth.signOut()
+  currentUser = null
+  render()
+}
+
+function resetAuthForm() {
+  authEmail = ''
+  authPassword = ''
+  authFirstName = ''
+  authLastName = ''
+  authCity = ''
+  authError = ''
+  authMessage = ''
+}
+
 // ---------- Weather ----------
 async function fetchWeatherFor(lat, lon, date) {
   const key = cacheKey(lat, lon, date)
@@ -322,12 +491,9 @@ async function fetchWeatherFor(lat, lon, date) {
     const res = await fetch(url)
     const data = await res.json()
 
-    if (data.error) {
-      console.warn('Weather API:', data.reason)
-      return null
-    }
+    if (data.error) return null
 
-    if (data.daily && data.daily.time) {
+    if (data.daily?.time) {
       let idx = data.daily.time.indexOf(date)
       if (idx === -1) idx = 0
 
@@ -367,7 +533,6 @@ async function doSearch() {
     return { ...trail, distanceFromDeparture: straight }
   })
 
-  // First rough filter (we will refine with driving distance later)
   list = list.filter(t => {
     if (filters.difficulty !== 'all' && t.difficulty !== filters.difficulty) return false
     if (filters.minElevation && t.elevationGainM < Number(filters.minElevation)) return false
@@ -403,15 +568,14 @@ async function doSearch() {
     t.reason = getRecommendationReason(t)
   })
 
-  // Apply driving distance filter
-  let filtered = candidates
+  let filtered = candidates.filter(t => t.isDrivingDistance)
+
   if (filters.maxDistance) {
-    filtered = candidates.filter(t => t.distanceKmValue <= Number(filters.maxDistance))
+    filtered = filtered.filter(t => t.distanceKmValue <= Number(filters.maxDistance))
   }
 
-  // Final sort
   if (sortBy === 'weather') {
-    filtered.sort((a, b) => sortDir === 'asc' ? a.weatherScore - b.weatherScore : b.weatherScore - a.weatherScore)
+    filtered.sort((a, b) => sortDir === 'asc' ? b.weatherScore - a.weatherScore : a.weatherScore - b.weatherScore)
   } else if (sortBy === 'distance') {
     filtered.sort((a, b) => sortDir === 'asc' ? a.distanceKmValue - b.distanceKmValue : b.distanceKmValue - a.distanceKmValue)
   } else if (sortBy === 'elevation') {
@@ -515,24 +679,88 @@ function render() {
     ).join('')}
   `
 
+  const orderOptions = sortBy === 'weather'
+    ? `<option value="asc">${t('better')}</option><option value="desc">${t('worse')}</option>`
+    : `<option value="asc">${t('ascending')}</option><option value="desc">${t('descending')}</option>`
+
   app.innerHTML = `
     <div class="container">
-      <div class="lang-switcher">
-      <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">
-      <img src="https://flagcdn.com/w40/gb.png" alt="English" class="flag-icon"> EN
-    </button>
-    <button class="lang-btn ${lang === 'it' ? 'active' : ''}" data-lang="it">
-      <img src="https://flagcdn.com/w40/it.png" alt="Italiano" class="flag-icon"> IT
-    </button>
-    <button class="lang-btn ${lang === 'de' ? 'active' : ''}" data-lang="de">
-      <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="flag-icon"> DE
-    </button>
+      <div class="top-bar">
+        <div class="lang-switcher">
+          <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">
+            <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"> EN
+          </button>
+          <button class="lang-btn ${lang === 'it' ? 'active' : ''}" data-lang="it">
+            <img src="https://flagcdn.com/w40/it.png" alt="IT" class="flag-icon"> IT
+          </button>
+          <button class="lang-btn ${lang === 'de' ? 'active' : ''}" data-lang="de">
+            <img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag-icon"> DE
+          </button>
+        </div>
+
+        <div class="auth-area">
+          ${currentUser ? `
+            <span class="user-email">${currentUser.user_metadata?.first_name || ''} ${currentUser.email}</span>
+            <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
+          ` : `
+            <button id="loginBtn" class="auth-btn">${t('signIn')}</button>
+          `}
+        </div>
       </div>
 
       <header>
         <h1>🏔️ ${t('title')}</h1>
         <p>${t('subtitle')}</p>
       </header>
+
+      ${showAuthModal ? `
+        <div class="auth-modal-overlay">
+          <div class="auth-modal">
+            <button id="closeAuthModal" class="close-modal">✕</button>
+            
+            <h2>
+              ${authMode === 'login' ? t('signIn') : 
+                authMode === 'signup' ? t('createAccount') : 
+                t('resetPassword')}
+            </h2>
+
+            ${authMode === 'signup' ? `
+              <div class="auth-row">
+                <input type="text" id="authFirstName" placeholder="${t('firstName')} *" value="${authFirstName}">
+                <input type="text" id="authLastName" placeholder="${t('lastName')} *" value="${authLastName}">
+              </div>
+              <input type="text" id="authCity" placeholder="${t('city')}" value="${authCity}">
+            ` : ''}
+
+            <input type="email" id="authEmail" placeholder="${t('email')} *" value="${authEmail}">
+            
+            ${authMode !== 'forgot' ? `
+              <input type="password" id="authPassword" placeholder="${t('password')} *" value="${authPassword}">
+            ` : ''}
+
+            ${authError ? `<div class="auth-error">${authError}</div>` : ''}
+            ${authMessage ? `<div class="auth-message">${authMessage}</div>` : ''}
+
+            <button id="authSubmitBtn" class="search-btn" ${authLoading ? 'disabled' : ''}>
+              ${authLoading ? t('pleaseWait') : 
+                authMode === 'login' ? t('signIn') : 
+                authMode === 'signup' ? t('createAccount') : 
+                t('sendResetLink')}
+            </button>
+
+            <div class="auth-links">
+              ${authMode === 'login' ? `
+                <button id="forgotPasswordBtn" class="link-btn">${t('forgotPassword')}</button>
+                <p>${t('noAccount')} <button id="switchToSignup" class="link-btn">${t('createAccount')}</button></p>
+              ` : authMode === 'signup' ? `
+                <p>${t('hasAccount')} <button id="switchToLogin" class="link-btn">${t('signIn')}</button></p>
+              ` : `
+                <button id="switchToLogin" class="link-btn">${t('backToLogin')}</button>
+              `}
+            </div>
+          </div>
+        </div>
+      ` : ''}
 
       <div class="filters">
         <div class="filter-group ${errors.departure ? 'error-field' : ''}" style="flex:1;min-width:220px;position:relative">
@@ -558,7 +786,7 @@ function render() {
         </div>
 
         <div class="filter-group">
-        <label>🚗 ${t('maxDistance')}</label>
+          <label>🚗 ${t('maxDistance')}</label>
           <input type="number" id="maxDistance" placeholder="e.g. 25" value="${filters.maxDistance}" min="1" max="80">
         </div>
 
@@ -585,10 +813,7 @@ function render() {
 
         <div class="filter-group">
           <label>${t('order')}</label>
-          <select id="sortDir">
-            <option value="asc">${t('ascending')}</option>
-            <option value="desc">${t('descending')}</option>
-          </select>
+          <select id="sortDir">${orderOptions}</select>
         </div>
 
         <div class="filter-group" style="align-self:end">
@@ -609,9 +834,7 @@ function render() {
 
       ${hasSearched ? `
         <div class="weather-bar">
-          ${weatherLoading ? `
-            <div>${t('loading')}</div>
-          ` : departureWeather ? `
+          ${weatherLoading ? `<div>${t('loading')}</div>` : departureWeather ? `
             <div class="weather-info">
               <span class="weather-date">${formatDateLabel(selectedDate)}</span>
               <span class="weather-main">${depWeatherDesc.icon} ${depWeatherDesc.text}</span>
@@ -620,16 +843,12 @@ function render() {
               <span>💧 ${departureWeather.precipitation_sum ?? 0} mm</span>
             </div>
             <div class="weather-note">${t('weatherAtDeparture')}</div>
-          ` : `
-            <div>—</div>
-          `}
+          ` : `<div>—</div>`}
         </div>
       ` : ''}
 
       <div class="results-info">
-        ${!hasSearched ? t('fillRequired') :
-          weatherLoading ? t('loading') :
-          t('best10')}
+        ${!hasSearched ? t('fillRequired') : weatherLoading ? t('loading') : t('best10')}
       </div>
 
       <div class="trails-list">
@@ -640,9 +859,6 @@ function render() {
         ` : results.map(trail => {
           const w = trail.dayWeather
           const desc = w ? getWeatherDescription(w.weather_code) : null
-          const distLabel = trail.isDrivingDistance
-            ? `🚗 ${trail.distanceKmValue.toFixed(1)} ${t('drive')}`
-            : `📏 ${trail.distanceKmValue.toFixed(1)} ${t('straightLine')}`
           return `
             <div class="trail-card" data-url="${trail.guideUrl}">
               <div class="card-header">
@@ -653,7 +869,7 @@ function render() {
                 <span>📍 ${trail.area}</span>
                 <span>📏 ${trail.distanceKm} km</span>
                 <span>⬆️ ${trail.elevationGainM} m</span>
-                <span class="distance">${distLabel}</span>
+                <span class="distance">🚗 ${trail.distanceKmValue.toFixed(1)} ${t('drive')}</span>
               </div>
               ${w ? `
                 <div class="card-weather">
@@ -661,9 +877,7 @@ function render() {
                   · ${Math.round(w.temperature_2m_min)}–${Math.round(w.temperature_2m_max)}°C
                   · ${w.precipitation_probability_max ?? 0}%
                 </div>
-              ` : `
-                <div class="card-weather loading">—</div>
-              `}
+              ` : `<div class="card-weather loading">—</div>`}
               <div class="reason">${trail.reason}</div>
               <p>${trail.description}</p>
               <div class="card-hint">${t('clickGuide')}</div>
@@ -687,52 +901,104 @@ function render() {
     })
   })
 
-  document.getElementById('difficulty').value = filters.difficulty
-  document.getElementById('difficulty').addEventListener('change', e => {
-    filters.difficulty = e.target.value
+  // Auth
+  const loginBtn = document.getElementById('loginBtn')
+  if (loginBtn) loginBtn.addEventListener('click', () => {
+    showAuthModal = true
+    authMode = 'login'
+    resetAuthForm()
+    render()
   })
 
-  document.getElementById('maxDistance').addEventListener('change', e => {
-    filters.maxDistance = e.target.value
+  const logoutBtn = document.getElementById('logoutBtn')
+  if (logoutBtn) logoutBtn.addEventListener('click', handleLogout)
+
+  const closeAuthModal = document.getElementById('closeAuthModal')
+  if (closeAuthModal) closeAuthModal.addEventListener('click', () => {
+    showAuthModal = false
+    render()
   })
-  document.getElementById('minElevation').addEventListener('change', e => {
-    filters.minElevation = e.target.value
+
+  const switchToSignup = document.getElementById('switchToSignup')
+  if (switchToSignup) switchToSignup.addEventListener('click', () => {
+    authMode = 'signup'
+    authError = ''
+    authMessage = ''
+    render()
   })
-  document.getElementById('maxElevation').addEventListener('change', e => {
-    filters.maxElevation = e.target.value
+
+  const switchToLogin = document.getElementById('switchToLogin')
+  if (switchToLogin) switchToLogin.addEventListener('click', () => {
+    authMode = 'login'
+    authError = ''
+    authMessage = ''
+    render()
   })
+
+  const forgotPasswordBtn = document.getElementById('forgotPasswordBtn')
+  if (forgotPasswordBtn) forgotPasswordBtn.addEventListener('click', () => {
+    authMode = 'forgot'
+    authError = ''
+    authMessage = ''
+    render()
+  })
+
+  const authSubmitBtn = document.getElementById('authSubmitBtn')
+  if (authSubmitBtn) authSubmitBtn.addEventListener('click', () => {
+    if (authMode === 'login') handleLogin()
+    else if (authMode === 'signup') handleSignup()
+    else handleForgotPassword()
+  })
+
+  // Auth inputs
+  ;['authEmail', 'authPassword', 'authFirstName', 'authLastName', 'authCity'].forEach(id => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.addEventListener('input', (e) => {
+        if (id === 'authEmail') authEmail = e.target.value
+        if (id === 'authPassword') authPassword = e.target.value
+        if (id === 'authFirstName') authFirstName = e.target.value
+        if (id === 'authLastName') authLastName = e.target.value
+        if (id === 'authCity') authCity = e.target.value
+      })
+    }
+  })
+
+  // Filters
+  document.getElementById('difficulty').value = filters.difficulty
+  document.getElementById('difficulty').addEventListener('change', e => filters.difficulty = e.target.value)
+
+  document.getElementById('maxDistance').addEventListener('change', e => filters.maxDistance = e.target.value)
+  document.getElementById('minElevation').addEventListener('change', e => filters.minElevation = e.target.value)
+  document.getElementById('maxElevation').addEventListener('change', e => filters.maxElevation = e.target.value)
 
   document.getElementById('sortBy').value = sortBy
   document.getElementById('sortBy').addEventListener('change', e => {
     sortBy = e.target.value
     errors.sortBy = false
+    sortDir = 'asc'
+    render()
   })
 
   document.getElementById('sortDir').value = sortDir
-  document.getElementById('sortDir').addEventListener('change', e => {
-    sortDir = e.target.value
-  })
+  document.getElementById('sortDir').addEventListener('change', e => sortDir = e.target.value)
 
   document.getElementById('dateSelect').addEventListener('change', e => {
     selectedDate = e.target.value
     errors.date = false
   })
 
-  document.getElementById('searchBtn').addEventListener('click', () => {
-    doSearch()
-  })
+  document.getElementById('searchBtn').addEventListener('click', doSearch)
 
   const clearBtn = document.getElementById('clearDeparture')
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      departure = { name: '', lat: null, lon: null }
-      inputValue = ''
-      departureWeather = null
-      hasSearched = false
-      results = []
-      render()
-    })
-  }
+  if (clearBtn) clearBtn.addEventListener('click', () => {
+    departure = { name: '', lat: null, lon: null }
+    inputValue = ''
+    departureWeather = null
+    hasSearched = false
+    results = []
+    render()
+  })
 
   document.getElementById('resetBtn').addEventListener('click', () => {
     filters = { difficulty: 'all', maxDistance: '', minElevation: '', maxElevation: '' }
@@ -765,4 +1031,5 @@ function render() {
   updateSuggestionsOnly()
 }
 
-render()
+// Start
+checkUser()
