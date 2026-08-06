@@ -1,5 +1,4 @@
 export const trails = [
-  // ===== Easy / Tourist (T) =====
   {
     id: 1,
     name: 'Giro del Lago di Tovel',
@@ -9,10 +8,8 @@ export const trails = [
     elevationGainM: 80,
     startLat: 46.2615,
     startLon: 10.948,
-    description:
-      'Easy and very scenic loop around the famous emerald lake. Perfect for families.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-tovel_md_2273',
+    description: 'Easy and very scenic loop around the famous emerald lake. Perfect for families.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/tour/il-giro-del-lago-di-tovel_tour_2808342'
   },
   {
     id: 2,
@@ -24,8 +21,7 @@ export const trails = [
     startLat: 46.168,
     startLon: 10.688,
     description: 'Short walk to the impressive 130 m high Nardis waterfalls.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300'
   },
   {
     id: 3,
@@ -36,10 +32,8 @@ export const trails = [
     elevationGainM: 120,
     startLat: 46.409,
     startLon: 11.575,
-    description:
-      'Beautiful easy loop around the famous lake with Latemar views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-carezza_md_2268',
+    description: 'Beautiful easy loop around the famous lake with Latemar views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-carezza_md_2268'
   },
   {
     id: 4,
@@ -51,8 +45,7 @@ export const trails = [
     startLat: 46.145,
     startLon: 10.965,
     description: 'Scenic lakeside path with the Brenta Dolomites as backdrop.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-molveno_md_2270',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-molveno_md_2346'
   },
   {
     id: 5,
@@ -64,7 +57,7 @@ export const trails = [
     startLat: 46.05,
     startLon: 11.35,
     description: 'Very easy family walk to a nice waterfall near Levico.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/cascate/cascata-del-lupo_md_5067885'
   },
   {
     id: 6,
@@ -75,9 +68,8 @@ export const trails = [
     elevationGainM: 80,
     startLat: 46.052,
     startLon: 10.966,
-    description:
-      'Easy walk around the romantic lake with the castle on the rock.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    description: 'Easy walk around the romantic lake with the castle on the rock.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-toblino_md_2271'
   },
   {
     id: 7,
@@ -89,7 +81,7 @@ export const trails = [
     startLat: 45.885,
     startLon: 10.845,
     description: 'Famous panoramic path above Lake Garda with great views.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking/sentiero-del-ponale'
   },
   {
     id: 8,
@@ -100,12 +92,9 @@ export const trails = [
     elevationGainM: 180,
     startLat: 45.92,
     startLon: 10.83,
-    description:
-      'Pleasant walk around the turquoise Lago di Tenno and the medieval village.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    description: 'Pleasant walk around the turquoise Lago di Tenno and the medieval village.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-tenno_md_2272'
   },
-
-  // ===== Hiking (E) =====
   {
     id: 9,
     name: 'Monte Bondone – Viote',
@@ -116,7 +105,7 @@ export const trails = [
     startLat: 46.0,
     startLon: 11.05,
     description: 'Nice ridge walk above Trento with alpine meadows.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 10,
@@ -128,7 +117,7 @@ export const trails = [
     startLat: 46.185,
     startLon: 10.895,
     description: 'Classic panoramic hike with great views of the Brenta group.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 11,
@@ -140,7 +129,7 @@ export const trails = [
     startLat: 46.43,
     startLon: 11.74,
     description: 'Classic route toward the Sella and Marmolada groups.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 12,
@@ -151,10 +140,8 @@ export const trails = [
     elevationGainM: 350,
     startLat: 46.165,
     startLon: 10.68,
-    description:
-      'Beautiful valley walk along several waterfalls including Nardis.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300',
+    description: 'Beautiful valley walk along several waterfalls including Nardis.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300'
   },
   {
     id: 13,
@@ -165,10 +152,8 @@ export const trails = [
     elevationGainM: 700,
     startLat: 46.2615,
     startLon: 10.948,
-    description:
-      'From Lago di Tovel up to the alpine pastures of Malga Flavona.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-tovel_md_2273',
+    description: 'From Lago di Tovel up to the alpine pastures of Malga Flavona.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/tour/il-giro-del-lago-di-tovel_tour_2808342'
   },
   {
     id: 14,
@@ -180,7 +165,7 @@ export const trails = [
     startLat: 46.175,
     startLon: 10.88,
     description: 'Beautiful hike into the heart of the Brenta group.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 15,
@@ -192,7 +177,7 @@ export const trails = [
     startLat: 45.82,
     startLon: 10.95,
     description: 'Panoramic mountain above Lake Garda with 360° views.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 16,
@@ -203,12 +188,9 @@ export const trails = [
     elevationGainM: 550,
     startLat: 46.035,
     startLon: 11.06,
-    description:
-      'Classic summit of Monte Bondone with views over Trento and the Adige valley.',
-    guideUrl: 'https://www.visittrentino.info/it',
+    description: 'Classic summit of Monte Bondone with views over Trento and the Adige valley.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
-
-  // ===== Experienced (EE) =====
   {
     id: 17,
     name: 'Rifugio Tuckett – Cima Brenta area',
@@ -219,7 +201,7 @@ export const trails = [
     startLat: 46.205,
     startLon: 10.87,
     description: 'Demanding high-mountain route. Good fitness required.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 18,
@@ -231,7 +213,7 @@ export const trails = [
     startLat: 46.14,
     startLon: 11.02,
     description: 'Long ascent with panoramic views over the Adige valley.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 19,
@@ -243,7 +225,7 @@ export const trails = [
     startLat: 46.15,
     startLon: 11.55,
     description: 'Highest peak of the Lagorai chain. Long and rewarding.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 20,
@@ -255,7 +237,7 @@ export const trails = [
     startLat: 46.22,
     startLon: 10.65,
     description: 'Highest peak entirely in Trentino. Very demanding.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 21,
@@ -266,9 +248,8 @@ export const trails = [
     elevationGainM: 600,
     startLat: 46.18,
     startLon: 10.89,
-    description:
-      'Famous equipped path in the heart of the Brenta. Via ferrata experience needed.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    description: 'Famous equipped path in the heart of the Brenta. Via ferrata experience needed.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 22,
@@ -279,9 +260,8 @@ export const trails = [
     elevationGainM: 950,
     startLat: 46.35,
     startLon: 11.15,
-    description:
-      'Beautiful ridge between Val di Non and South Tyrol with wide views.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    description: 'Beautiful ridge between Val di Non and South Tyrol with wide views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 23,
@@ -292,9 +272,8 @@ export const trails = [
     elevationGainM: 850,
     startLat: 46.14,
     startLon: 10.62,
-    description:
-      'Long but beautiful hike to one of the most remote lakes in the Adamello group.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    description: 'Long but beautiful hike to one of the most remote lakes in the Adamello group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 24,
@@ -306,7 +285,7 @@ export const trails = [
     startLat: 46.18,
     startLon: 11.48,
     description: 'Wild and panoramic peak in the Lagorai chain.',
-    guideUrl: 'https://www.sat.tn.it/sentieri/',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 25,
@@ -317,10 +296,8 @@ export const trails = [
     elevationGainM: 180,
     startLat: 46.261,
     startLon: 11.8,
-    description:
-      'Easy and very scenic walk to the two Colbricon lakes with views of the Pale di San Martino.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Easy and very scenic walk to the two Colbricon lakes with views of the Pale di San Martino.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/laghi-di-colbricon'
   },
   {
     id: 26,
@@ -331,10 +308,8 @@ export const trails = [
     elevationGainM: 350,
     startLat: 45.885,
     startLon: 10.845,
-    description:
-      'Famous panoramic path above Lake Garda with spectacular views and the Ponale waterfall.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Famous panoramic path above Lake Garda with spectacular views and the Ponale waterfall.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking/sentiero-del-ponale'
   },
   {
     id: 27,
@@ -345,10 +320,8 @@ export const trails = [
     elevationGainM: 50,
     startLat: 46.015,
     startLon: 11.3,
-    description:
-      'Flat and pleasant loop around Lake Levico, perfect for families.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Flat and pleasant loop around Lake Levico, perfect for families.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-levico'
   },
   {
     id: 28,
@@ -359,10 +332,8 @@ export const trails = [
     elevationGainM: 200,
     startLat: 46.36,
     startLon: 11.1,
-    description:
-      'Famous path carved into the rock leading to the Sanctuary of San Romedio.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Famous path carved into the rock leading to the Sanctuary of San Romedio.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/cultura/santuari/santuario-di-san-romedio'
   },
   {
     id: 29,
@@ -373,10 +344,8 @@ export const trails = [
     elevationGainM: 150,
     startLat: 46.35,
     startLon: 11.45,
-    description:
-      'Easy high-altitude walk between the two characteristic peaks of Corno Nero and Corno Bianco.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Easy high-altitude walk between the two characteristic peaks of Corno Nero and Corno Bianco.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 30,
@@ -387,10 +356,8 @@ export const trails = [
     elevationGainM: 450,
     startLat: 46.296,
     startLon: 11.79,
-    description:
-      'Classic walk to Baita Segantini with the iconic view of Cimon della Pala and the Thinking Christ statue.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Classic walk to Baita Segantini with the iconic view of Cimon della Pala and the Thinking Christ statue.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 31,
@@ -401,10 +368,8 @@ export const trails = [
     elevationGainM: 950,
     startLat: 46.17,
     startLon: 10.87,
-    description:
-      'Beautiful hike into the heart of the Brenta group toward Rifugio XII Apostoli.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Beautiful hike into the heart of the Brenta group toward Rifugio XII Apostoli.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 32,
@@ -415,10 +380,8 @@ export const trails = [
     elevationGainM: 900,
     startLat: 45.82,
     startLon: 10.95,
-    description:
-      'Panoramic mountain above Lake Garda, also known as “Garda’s balcony”.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Panoramic mountain above Lake Garda, also known as “Garda’s balcony”.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 33,
@@ -429,10 +392,8 @@ export const trails = [
     elevationGainM: 700,
     startLat: 45.92,
     startLon: 10.85,
-    description:
-      'First stage of the Frassati path with great views over Lake Garda and the surrounding mountains.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'First stage of the Frassati path with great views over Lake Garda and the surrounding mountains.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 34,
@@ -443,10 +404,8 @@ export const trails = [
     elevationGainM: 720,
     startLat: 46.35,
     startLon: 11.55,
-    description:
-      'Famous hike to the characteristic rock tower “Torre di Pisa” in the Latemar group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Famous hike to the characteristic rock tower “Torre di Pisa” in the Latemar group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 35,
@@ -457,10 +416,8 @@ export const trails = [
     elevationGainM: 100,
     startLat: 45.92,
     startLon: 10.83,
-    description:
-      'Pleasant walk from the turquoise Lake Tenno to the medieval village of Canale.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Pleasant walk from the turquoise Lake Tenno to the medieval village of Canale.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-tenno_md_2272'
   },
   {
     id: 36,
@@ -471,10 +428,8 @@ export const trails = [
     elevationGainM: 280,
     startLat: 46.05,
     startLon: 11.4,
-    description:
-      'Interesting historical path linked to the old mining activity in the area.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Interesting historical path linked to the old mining activity in the area.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 37,
@@ -485,10 +440,8 @@ export const trails = [
     elevationGainM: 650,
     startLat: 46.05,
     startLon: 11.18,
-    description:
-      'Demanding but rewarding loop on the Marzola mountain overlooking Trento.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Demanding but rewarding loop on the Marzola mountain overlooking Trento.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 38,
@@ -499,10 +452,8 @@ export const trails = [
     elevationGainM: 536,
     startLat: 46.1,
     startLon: 11.15,
-    description:
-      'Panoramic hike on Monte Calisio with views over Trento and the Adige valley.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Panoramic hike on Monte Calisio with views over Trento and the Adige valley.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 39,
@@ -513,10 +464,8 @@ export const trails = [
     elevationGainM: 80,
     startLat: 46.13,
     startLon: 11.25,
-    description:
-      'Easy and scenic loop connecting the main lakes of the Piné plateau.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Easy and scenic loop connecting the main lakes of the Piné plateau.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 40,
@@ -527,10 +476,8 @@ export const trails = [
     elevationGainM: 500,
     startLat: 46.28,
     startLon: 11.5,
-    description:
-      'Beautiful walk to Malga Sass at the foot of the Lagorai chain, especially nice in spring for the flowers.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Beautiful walk to Malga Sass at the foot of the Lagorai chain, especially nice in spring for the flowers.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 41,
@@ -541,10 +488,8 @@ export const trails = [
     elevationGainM: 450,
     startLat: 45.88,
     startLon: 10.75,
-    description:
-      'Historical path among WWI trenches with great views over Lake Ledro and Lake Garda.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Historical path among WWI trenches with great views over Lake Ledro and Lake Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 42,
@@ -555,1027 +500,228 @@ export const trails = [
     elevationGainM: 250,
     startLat: 45.87,
     startLon: 10.86,
-    description:
-      'Short but interesting historical hike linked to the Great War with the famous “Scala Santa”.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Short but interesting historical hike linked to the Great War with the famous “Scala Santa”.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 43,
-    name: 'Corno di Tres',
-    area: 'Val di Non',
+    name: 'Monte Gazza',
+    area: 'Paganella / Valle dei Laghi',
     difficulty: 'E',
-    distanceKm: 9.7,
-    elevationGainM: 600,
-    startLat: 46.32,
-    startLon: 11.12,
-    description:
-      'Nice loop with ascent to Corno di Tres and panoramic views over Val di Non.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    distanceKm: 11.0,
+    elevationGainM: 850,
+    startLat: 46.12,
+    startLon: 10.98,
+    description: 'Panoramic mountain between the Valle dei Laghi and the Paganella group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 44,
-    name: 'Monte Roen via Malga Smarano',
-    area: 'Val di Non / Oltradige',
-    difficulty: 'E',
-    distanceKm: 18.9,
-    elevationGainM: 950,
-    startLat: 46.35,
-    startLon: 11.15,
-    description:
-      'Long and panoramic ridge hike between Val di Non and South Tyrol.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 45,
-    name: 'Rifugio Brentei da Vallesinella',
-    area: 'Brenta Dolomites',
-    difficulty: 'E',
-    distanceKm: 10.0,
-    elevationGainM: 800,
-    startLat: 46.185,
-    startLon: 10.88,
-    description:
-      'Classic approach to Rifugio Brentei in the heart of the Brenta group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 46,
-    name: 'Laghi di Cornisello',
-    area: 'Val Nambrone / Adamello-Presanella',
-    difficulty: 'E',
-    distanceKm: 8.0,
-    elevationGainM: 450,
-    startLat: 46.2,
-    startLon: 10.7,
-    description:
-      'Beautiful hike to the Cornisello lakes under the Presanella group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 47,
-    name: 'Cima Vese da Malga Mondent Alta',
-    area: 'Catena delle Maddalene',
-    difficulty: 'E',
-    distanceKm: 11.0,
-    elevationGainM: 700,
-    startLat: 46.4,
-    startLon: 11.0,
-    description: 'Panoramic hike in the quiet Maddalene mountain chain.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 48,
-    name: 'Pian della Nana',
-    area: 'Adamello-Brenta / Val di Non',
-    difficulty: 'T',
-    distanceKm: 7.0,
-    elevationGainM: 250,
-    startLat: 46.28,
-    startLon: 10.95,
-    description:
-      'Peaceful and scenic walk in one of the most beautiful high plateaus of the Adamello-Brenta Nature Park.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 49,
-    name: 'Sentiero del Dürer (Trentino section)',
-    area: 'Valsugana / Valsugana',
-    difficulty: 'E',
-    distanceKm: 12.0,
-    elevationGainM: 400,
-    startLat: 46.05,
-    startLon: 11.45,
-    description:
-      'Historical path following the footsteps of Albrecht Dürer through the Valsugana.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 50,
-    name: 'Cammino di San Rocco – Tappa 1',
-    area: 'Vallagarina / Val di Gresta',
-    difficulty: 'E',
-    distanceKm: 14.0,
-    elevationGainM: 550,
-    startLat: 45.85,
-    startLon: 11.0,
-    description:
-      'First stage of the San Rocco pilgrimage path in southern Trentino.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 51,
-    name: 'Sentiero della Pace – Passo del Tonale area',
-    area: 'Val di Sole / Adamello',
-    difficulty: 'EE',
-    distanceKm: 15.0,
-    elevationGainM: 900,
-    startLat: 46.26,
-    startLon: 10.58,
-    description:
-      'Section of the long Peace Path near the Tonale Pass with WWI history.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 52,
-    name: 'Lago di San Giuliano',
-    area: 'Val di Genova / Adamello',
-    difficulty: 'E',
-    distanceKm: 14.0,
-    elevationGainM: 850,
-    startLat: 46.14,
-    startLon: 10.62,
-    description:
-      'Long but beautiful hike to one of the most remote lakes under the Adamello glaciers.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 53,
-    name: 'Rifugio Mandron – Val di Genova',
-    area: 'Adamello',
-    difficulty: 'EE',
-    distanceKm: 16.0,
-    elevationGainM: 1100,
-    startLat: 46.16,
-    startLon: 10.6,
-    description:
-      'Demanding approach to the historic Mandron hut at the foot of the Adamello glacier.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 54,
-    name: 'Cima Presanella (normal route approach)',
-    area: 'Adamello-Presanella',
-    difficulty: 'EE',
-    distanceKm: 18.0,
-    elevationGainM: 1600,
-    startLat: 46.22,
-    startLon: 10.65,
-    description: 'Long approach toward the highest peak entirely in Trentino.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 55,
-    name: 'Lago delle Malghette',
-    area: 'Madonna di Campiglio / Brenta',
-    difficulty: 'E',
-    distanceKm: 8.5,
-    elevationGainM: 450,
-    startLat: 46.23,
-    startLon: 10.83,
-    description:
-      'Scenic hike to the Malghette lake with views of the Brenta Dolomites.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 56,
-    name: 'Rifugio Graffer – Passo del Grostè',
-    area: 'Brenta Dolomites',
-    difficulty: 'E',
-    distanceKm: 6.0,
-    elevationGainM: 300,
-    startLat: 46.21,
-    startLon: 10.9,
-    description:
-      'Easy high-altitude walk from the Grostè cable car to Rifugio Graffer.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 57,
-    name: 'Sentiero delle Bocchette Alte (approach)',
-    area: 'Brenta Dolomites',
-    difficulty: 'EEA',
-    distanceKm: 9.0,
-    elevationGainM: 700,
-    startLat: 46.19,
-    startLon: 10.88,
-    description:
-      'Approach to the famous equipped Bocchette path (via ferrata experience required).',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 58,
-    name: 'Malga Ritorto – Madonna di Campiglio',
-    area: 'Brenta Dolomites',
-    difficulty: 'T',
-    distanceKm: 5.5,
-    elevationGainM: 200,
-    startLat: 46.23,
-    startLon: 10.82,
-    description:
-      'Easy family walk to the panoramic Malga Ritorto above Campiglio.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 59,
-    name: 'Cima Sella – Brenta',
-    area: 'Brenta Dolomites',
-    difficulty: 'EE',
-    distanceKm: 13.0,
-    elevationGainM: 1100,
-    startLat: 46.2,
-    startLon: 10.87,
-    description:
-      'Demanding hike toward one of the classic peaks of the Brenta group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 60,
-    name: 'Lago di Tovel – Malga Tuena',
-    area: 'Val di Non / Brenta',
-    difficulty: 'E',
-    distanceKm: 9.0,
-    elevationGainM: 550,
-    startLat: 46.2615,
-    startLon: 10.948,
-    description:
-      'Nice continuation from Lago di Tovel up to the alpine pastures of Malga Tuena.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 61,
-    name: 'Cima Peller',
-    area: 'Val di Non',
-    difficulty: 'E',
-    distanceKm: 11.0,
-    elevationGainM: 800,
-    startLat: 46.3,
-    startLon: 10.98,
-    description: 'Panoramic peak above the Val di Non with wide views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 62,
-    name: 'Monte Roen – full ridge',
-    area: 'Val di Non / Oltradige',
-    difficulty: 'EE',
-    distanceKm: 16.0,
-    elevationGainM: 1100,
-    startLat: 46.35,
-    startLon: 11.15,
-    description: 'Long ridge traverse between Val di Non and South Tyrol.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 63,
-    name: 'Lago di Carezza – Latemar towers view',
-    area: "Val d'Ega / Latemar",
-    difficulty: 'T',
-    distanceKm: 6.0,
-    elevationGainM: 150,
-    startLat: 46.409,
-    startLon: 11.575,
-    description: 'Extended easy walk around and above the famous Carezza lake.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 64,
-    name: 'Cima di Vezzena',
-    area: 'Altopiano di Lavarone / Vezzena',
-    difficulty: 'E',
-    distanceKm: 10.0,
-    elevationGainM: 500,
-    startLat: 45.95,
-    startLon: 11.3,
-    description:
-      'Panoramic hike on the Vezzena plateau with historical interest.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 65,
-    name: 'Forte Belvedere – Lavarone',
-    area: 'Altopiano di Lavarone',
-    difficulty: 'T',
-    distanceKm: 4.0,
-    elevationGainM: 120,
-    startLat: 45.94,
-    startLon: 11.28,
-    description:
-      'Easy walk to the well-preserved Austro-Hungarian fort of Belvedere.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 66,
-    name: 'Cima Dodici (approach)',
-    area: 'Altopiano di Lavarone / Asiago',
-    difficulty: 'EE',
-    distanceKm: 14.0,
-    elevationGainM: 1000,
-    startLat: 45.96,
-    startLon: 11.35,
-    description: 'Long approach toward Cima Dodici on the border with Veneto.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 67,
-    name: 'Sentiero dei Paseri – Val di Fassa',
-    area: 'Val di Fassa',
-    difficulty: 'E',
-    distanceKm: 8.0,
-    elevationGainM: 400,
-    startLat: 46.43,
-    startLon: 11.7,
-    description:
-      'Pleasant panoramic path in the Val di Fassa with views of the Sella group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 68,
-    name: 'Rifugio Gardeccia – Catinaccio',
-    area: 'Val di Fassa / Catinaccio',
-    difficulty: 'E',
-    distanceKm: 7.5,
-    elevationGainM: 500,
-    startLat: 46.45,
-    startLon: 11.65,
-    description:
-      'Classic access to the Catinaccio (Rosengarten) group via Gardeccia.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 69,
-    name: 'Passo San Pellegrino – Fuciade',
-    area: 'Val di Fassa / Moena',
-    difficulty: 'T',
-    distanceKm: 6.0,
-    elevationGainM: 200,
-    startLat: 46.38,
-    startLon: 11.8,
-    description:
-      'Easy and scenic walk from Passo San Pellegrino to the Fuciade basin.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 70,
-    name: 'Cima Uomo – San Pellegrino',
-    area: 'Val di Fassa',
-    difficulty: 'EE',
-    distanceKm: 11.0,
-    elevationGainM: 900,
-    startLat: 46.38,
-    startLon: 11.79,
-    description:
-      'Demanding hike to Cima Uomo with great views over the San Pellegrino area.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 71,
-    name: 'Lago di Fedaia – Marmolada views',
-    area: 'Val di Fassa / Marmolada',
-    difficulty: 'T',
-    distanceKm: 5.0,
-    elevationGainM: 100,
-    startLat: 46.46,
-    startLon: 11.87,
-    description:
-      'Easy walk along the Fedaia lake with the impressive south face of the Marmolada.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 72,
-    name: 'Rifugio Contrin',
-    area: 'Val di Fassa / Marmolada',
-    difficulty: 'E',
-    distanceKm: 9.0,
-    elevationGainM: 600,
-    startLat: 46.44,
-    startLon: 11.82,
-    description:
-      'Beautiful hike into the Contrin valley toward the historic Contrin hut.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 73,
-    name: 'Sassolungo – Rifugio Vicenza approach',
-    area: 'Val Gardena / Sassolungo',
-    difficulty: 'E',
-    distanceKm: 8.0,
-    elevationGainM: 550,
-    startLat: 46.52,
-    startLon: 11.7,
-    description: 'Approach to the Sassolungo group from the Val di Fassa side.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 74,
-    name: 'Alpe di Siusi edge (Trentino side)',
-    area: 'Val di Fassa / Sciliar',
-    difficulty: 'T',
-    distanceKm: 7.0,
-    elevationGainM: 250,
-    startLat: 46.5,
-    startLon: 11.6,
-    description:
-      'Easy panoramic walk on the edge of the famous Alpe di Siusi plateau.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 75,
-    name: 'Cima di Cece – Lagorai',
-    area: 'Lagorai',
-    difficulty: 'EE',
-    distanceKm: 14.0,
-    elevationGainM: 1100,
-    startLat: 46.2,
-    startLon: 11.5,
-    description: 'Wild and panoramic peak in the heart of the Lagorai chain.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 76,
-    name: 'Lago di Erdemolo',
-    area: 'Valsugana / Lagorai',
-    difficulty: 'E',
-    distanceKm: 9.5,
-    elevationGainM: 600,
-    startLat: 46.1,
-    startLon: 11.4,
-    description: 'Popular hike to the beautiful Erdemolo lake in the Lagorai.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 77,
-    name: "Cima d'Asta – full approach",
-    area: 'Lagorai',
-    difficulty: 'EE',
-    distanceKm: 18.0,
-    elevationGainM: 1400,
-    startLat: 46.15,
-    startLon: 11.55,
-    description: 'Long approach to the highest peak of the Lagorai chain.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 78,
-    name: 'Sentiero dei Forti – Folgaria',
-    area: 'Altopiano di Folgaria',
-    difficulty: 'E',
-    distanceKm: 10.0,
-    elevationGainM: 350,
-    startLat: 45.92,
-    startLon: 11.18,
-    description:
-      'Historical path visiting the Austro-Hungarian forts on the Folgaria plateau.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 79,
-    name: 'Monte Finonchio',
-    area: 'Vallagarina',
-    difficulty: 'E',
-    distanceKm: 11.0,
-    elevationGainM: 800,
-    startLat: 45.85,
-    startLon: 11.05,
-    description:
-      'Panoramic mountain above Rovereto with views over the Adige valley.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 80,
-    name: 'Cascata del Lupo – extended',
-    area: 'Valsugana',
-    difficulty: 'T',
-    distanceKm: 5.0,
-    elevationGainM: 150,
-    startLat: 46.05,
-    startLon: 11.35,
-    description: 'Easy family walk extended around the Cascata del Lupo area.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 81,
-    name: 'Arte Sella – Val di Sella',
-    area: 'Valsugana',
-    difficulty: 'T',
-    distanceKm: 4.0,
-    elevationGainM: 100,
-    startLat: 46.0,
-    startLon: 11.5,
-    description:
-      'Easy walk through the famous open-air art park of Arte Sella.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 82,
-    name: 'Monte Celva',
-    area: 'Trento east',
-    difficulty: 'E',
-    distanceKm: 7.0,
-    elevationGainM: 450,
-    startLat: 46.07,
-    startLon: 11.18,
-    description:
-      'Local hike above Trento with historical fortifications and city views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 83,
-    name: 'Viote – Giardino Botanico Alpino',
-    area: 'Monte Bondone',
-    difficulty: 'T',
-    distanceKm: 3.5,
-    elevationGainM: 80,
-    startLat: 46.0,
-    startLon: 11.05,
-    description:
-      'Easy walk around the alpine botanical garden at Viote di Monte Bondone.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 84,
-    name: 'Tre Cime del Bondone (Cornetto – Verde – Palon)',
-    area: 'Monte Bondone',
-    difficulty: 'EE',
-    distanceKm: 12.0,
-    elevationGainM: 800,
-    startLat: 46.02,
-    startLon: 11.04,
-    description: 'Classic traverse of the three main peaks of Monte Bondone.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 85,
-    name: 'Lago di Toblino – Castel Toblino',
+    name: 'Lago di Terlago',
     area: 'Valle dei Laghi',
     difficulty: 'T',
     distanceKm: 5.0,
-    elevationGainM: 80,
-    startLat: 46.052,
-    startLon: 10.966,
-    description:
-      'Romantic easy walk around Lago di Toblino and its lakeside castle.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    elevationGainM: 60,
+    startLat: 46.10,
+    startLon: 11.05,
+    description: 'Easy and pleasant walk around Lago di Terlago.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
   },
   {
-    id: 86,
-    name: 'Monte Gazza',
-    area: 'Valle dei Laghi / Paganella',
+    id: 45,
+    name: 'Cima Rocca',
+    area: 'Garda Trentino',
     difficulty: 'E',
-    distanceKm: 10.0,
-    elevationGainM: 700,
-    startLat: 46.1,
-    startLon: 11.0,
-    description:
-      'Panoramic hike with views over the Valle dei Laghi and the Brenta group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 87,
-    name: 'Sentiero San Vili – low variant (section)',
-    area: 'Val Rendena / Madonna di Campiglio',
-    difficulty: 'E',
-    distanceKm: 13.0,
+    distanceKm: 6.5,
     elevationGainM: 500,
-    startLat: 46.15,
-    startLon: 10.8,
-    description:
-      'Section of the historic San Vili path linking the Adige valley to the Brenta.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    startLat: 45.88,
+    startLon: 10.87,
+    description: 'Short but steep hike with spectacular views over Riva del Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 88,
-    name: 'Val Genova – Cascate di Nardis extended',
-    area: 'Val di Genova',
+    id: 46,
+    name: 'Sentiero del Garda',
+    area: 'Garda Trentino',
     difficulty: 'E',
-    distanceKm: 10.0,
-    elevationGainM: 400,
-    startLat: 46.165,
-    startLon: 10.68,
-    description:
-      'Longer version of the waterfall trail including Nardis, Casöl and Lares.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 89,
-    name: 'Rifugio Adamello – Val Genova',
-    area: 'Adamello',
-    difficulty: 'EE',
-    distanceKm: 17.0,
-    elevationGainM: 1200,
-    startLat: 46.15,
-    startLon: 10.58,
-    description: 'Long approach to Rifugio Adamello deep in the Val Genova.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 90,
-    name: 'Cima Satta – Lagorai',
-    area: 'Lagorai',
-    difficulty: 'EE',
-    distanceKm: 13.0,
-    elevationGainM: 1000,
-    startLat: 46.18,
-    startLon: 11.48,
-    description: 'Wild peak in the central Lagorai with excellent views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 91,
-    name: 'Malga Sadole – Lagorai',
-    area: 'Val di Fiemme / Lagorai',
-    difficulty: 'E',
-    distanceKm: 9.0,
-    elevationGainM: 450,
-    startLat: 46.25,
-    startLon: 11.45,
-    description: 'Pleasant hike to Malga Sadole in the green Lagorai pastures.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 92,
-    name: 'Cima Bolle – Pale di San Martino',
-    area: 'San Martino di Castrozza',
-    difficulty: 'EE',
     distanceKm: 12.0,
-    elevationGainM: 950,
-    startLat: 46.26,
-    startLon: 11.82,
-    description: 'Demanding hike toward the Pale di San Martino group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 93,
-    name: 'Rifugio Rosetta – Pale di San Martino',
-    area: 'San Martino di Castrozza',
-    difficulty: 'E',
-    distanceKm: 6.0,
-    elevationGainM: 300,
-    startLat: 46.26,
-    startLon: 11.85,
-    description:
-      'Easy high-altitude walk from the cable car to Rifugio Rosetta.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 94,
-    name: 'Val Venegia – Cimon della Pala views',
-    area: 'San Martino di Castrozza / Pale',
-    difficulty: 'T',
-    distanceKm: 7.0,
-    elevationGainM: 250,
-    startLat: 46.3,
-    startLon: 11.8,
-    description:
-      'One of the most scenic easy valleys at the foot of Cimon della Pala.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 95,
-    name: 'Passo Rolle – Baita Segantini classic',
-    area: 'San Martino di Castrozza',
-    difficulty: 'E',
-    distanceKm: 8.0,
-    elevationGainM: 350,
-    startLat: 46.296,
-    startLon: 11.79,
-    description:
-      'Classic and very popular walk from Passo Rolle to Baita Segantini.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 96,
-    name: 'Monte Baldo – Cima Valdritta approach (Trentino side)',
-    area: 'Monte Baldo / Garda',
-    difficulty: 'EE',
-    distanceKm: 14.0,
-    elevationGainM: 1100,
-    startLat: 45.75,
-    startLon: 10.85,
-    description:
-      'Long approach on the Trentino side of Monte Baldo toward the main summit.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 97,
-    name: 'Sentiero del Ponale – full to Pregasina',
-    area: 'Riva del Garda',
-    difficulty: 'E',
-    distanceKm: 13.0,
-    elevationGainM: 500,
-    startLat: 45.885,
-    startLon: 10.845,
-    description:
-      'Full version of the famous Ponale path continuing to Pregasina.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 98,
-    name: 'Busatte – Tempesta panoramic path',
-    area: 'Torbole / Garda Trentino',
-    difficulty: 'E',
-    distanceKm: 10.8,
     elevationGainM: 400,
-    startLat: 45.87,
-    startLon: 10.88,
-    description:
-      'Scenic path above Torbole with continuous views over Lake Garda.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    startLat: 45.89,
+    startLon: 10.85,
+    description: 'Panoramic path high above Lake Garda between Riva and Limone.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 99,
-    name: 'Cima Brenta Alta (approach)',
-    area: 'Brenta Dolomites',
-    difficulty: 'EE',
-    distanceKm: 14.0,
-    elevationGainM: 1200,
-    startLat: 46.195,
-    startLon: 10.89,
-    description:
-      'Long and demanding approach toward one of the highest peaks of the Brenta group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 100,
-    name: 'Rifugio Tuckett – Brenta',
-    area: 'Brenta Dolomites',
-    difficulty: 'E',
-    distanceKm: 9.5,
-    elevationGainM: 700,
-    startLat: 46.205,
-    startLon: 10.875,
-    description:
-      'Classic hike to the historic Tuckett hut with spectacular views of the Brenta towers.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 101,
-    name: 'Valagola – Lago di Valagola',
-    area: 'Brenta Dolomites',
-    difficulty: 'E',
-    distanceKm: 11.0,
-    elevationGainM: 550,
-    startLat: 46.175,
-    startLon: 10.91,
-    description:
-      'Beautiful valley walk leading to the peaceful Lago di Valagola.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 102,
-    name: 'Cima Sella from Rifugio Brentei',
-    area: 'Brenta Dolomites',
-    difficulty: 'EE',
-    distanceKm: 8.0,
-    elevationGainM: 650,
-    startLat: 46.19,
-    startLon: 10.885,
-    description:
-      'Challenging continuation from Rifugio Brentei toward Cima Sella.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 103,
-    name: 'Malga Flavona – Val di Tovel',
-    area: 'Val di Non / Brenta',
-    difficulty: 'E',
-    distanceKm: 10.5,
-    elevationGainM: 600,
-    startLat: 46.27,
-    startLon: 10.96,
-    description: 'Scenic hike from Lago di Tovel area up to Malga Flavona.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 104,
-    name: 'Cima Roma',
-    area: 'Brenta Dolomites',
-    difficulty: 'EE',
-    distanceKm: 13.0,
-    elevationGainM: 1100,
-    startLat: 46.21,
-    startLon: 10.86,
-    description:
-      'Demanding peak in the northern Brenta with wide panoramic views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 105,
-    name: 'Sentiero delle Bocchette Centrali (approach)',
-    area: 'Brenta Dolomites',
-    difficulty: 'EEA',
-    distanceKm: 7.5,
-    elevationGainM: 500,
-    startLat: 46.2,
-    startLon: 10.88,
-    description:
-      'Approach to the famous equipped Bocchette path (via ferrata experience required).',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 106,
-    name: 'Rifugio Alimonta',
-    area: 'Brenta Dolomites',
+    id: 47,
+    name: 'Monte Altissimo di Nago',
+    area: 'Garda Trentino',
     difficulty: 'E',
     distanceKm: 10.0,
-    elevationGainM: 800,
-    startLat: 46.185,
-    startLon: 10.895,
-    description:
-      'Hike to Rifugio Alimonta, a key base for the Bocchette routes.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    elevationGainM: 700,
+    startLat: 45.85,
+    startLon: 10.90,
+    description: 'Classic panoramic peak above Nago with views of Lake Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 107,
-    name: 'Val di Fumo',
-    area: 'Adamello',
-    difficulty: 'E',
-    distanceKm: 16.0,
-    elevationGainM: 450,
-    startLat: 46.1,
-    startLon: 10.6,
-    description: 'Long and wild valley walk in the heart of the Adamello park.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    id: 48,
+    name: 'Valle di Ledro – Lago di Ledro',
+    area: 'Valle di Ledro',
+    difficulty: 'T',
+    distanceKm: 9.0,
+    elevationGainM: 100,
+    startLat: 45.88,
+    startLon: 10.75,
+    description: 'Easy and scenic loop around the beautiful Lago di Ledro.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi/lago-di-ledro'
   },
   {
-    id: 108,
-    name: 'Rifugio Mandron from Val di Genova',
-    area: 'Adamello',
-    difficulty: 'EE',
-    distanceKm: 15.0,
-    elevationGainM: 1050,
-    startLat: 46.155,
-    startLon: 10.61,
-    description:
-      'Classic long approach to the Mandron hut under the Adamello glacier.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 109,
-    name: 'Lago di Vedretta',
-    area: 'Adamello',
+    id: 49,
+    name: 'Cima Sat',
+    area: 'Valle di Ledro',
     difficulty: 'EE',
     distanceKm: 12.0,
     elevationGainM: 900,
-    startLat: 46.14,
-    startLon: 10.58,
-    description: 'High mountain lake at the foot of the Adamello glaciers.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 110,
-    name: 'Cima Presanella – normal route',
-    area: 'Adamello-Presanella',
-    difficulty: 'EE',
-    distanceKm: 17.0,
-    elevationGainM: 1500,
-    startLat: 46.22,
-    startLon: 10.67,
-    description: 'Long ascent to the highest peak entirely in Trentino.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 111,
-    name: 'Rifugio Segantini – Val Nambrone',
-    area: 'Adamello-Presanella',
-    difficulty: 'E',
-    distanceKm: 9.0,
-    elevationGainM: 650,
-    startLat: 46.21,
+    startLat: 45.87,
     startLon: 10.72,
-    description:
-      'Beautiful hike to Rifugio Segantini with views of the Presanella group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Demanding peak in the Ledro Alps with great views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 112,
-    name: 'Lago delle Salare',
-    area: 'Val di Non',
-    difficulty: 'E',
-    distanceKm: 8.5,
-    elevationGainM: 500,
-    startLat: 46.31,
-    startLon: 10.99,
-    description: 'Pleasant hike to the alpine lake of Salare.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 113,
-    name: 'Cima Boai',
-    area: 'Val di Non / Maddalene',
+    id: 50,
+    name: 'Passo Nota – Cima Parì',
+    area: 'Valle di Ledro',
     difficulty: 'E',
     distanceKm: 11.5,
-    elevationGainM: 750,
-    startLat: 46.38,
-    startLon: 11.02,
-    description: 'Panoramic peak in the quiet Maddalene chain.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    elevationGainM: 650,
+    startLat: 45.86,
+    startLon: 10.70,
+    description: 'Historical hike among WWI remains in the Ledro Alps.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 114,
-    name: 'Monte Roen – full traverse',
-    area: 'Val di Non',
-    difficulty: 'EE',
-    distanceKm: 17.0,
-    elevationGainM: 1000,
-    startLat: 46.34,
-    startLon: 11.14,
-    description:
-      'Long ridge traverse of Monte Roen between Val di Non and South Tyrol.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 115,
-    name: 'Lago di Santa Maria',
-    area: 'Val di Non',
-    difficulty: 'T',
-    distanceKm: 5.0,
-    elevationGainM: 150,
-    startLat: 46.35,
-    startLon: 11.08,
-    description: 'Easy and scenic walk to the small Lago di Santa Maria.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
-  },
-  {
-    id: 116,
-    name: 'Cima Peller from Malga Tassulla',
-    area: 'Val di Non',
+    id: 51,
+    name: 'Rifugio Nino Pernici',
+    area: 'Garda Trentino',
     difficulty: 'E',
-    distanceKm: 10.0,
+    distanceKm: 9.0,
     elevationGainM: 700,
-    startLat: 46.29,
-    startLon: 10.97,
-    description:
-      'Classic ascent of Cima Peller with wide views over the Brenta.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    startLat: 45.90,
+    startLon: 10.82,
+    description: 'Classic hike to Rifugio Nino Pernici with views over Lake Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 117,
-    name: 'Sentiero della Pace – Passo del Tonale section',
+    id: 52,
+    name: 'Cima Capi',
+    area: 'Garda Trentino',
+    difficulty: 'E',
+    distanceKm: 8.0,
+    elevationGainM: 600,
+    startLat: 45.89,
+    startLon: 10.83,
+    description: 'Panoramic peak above Riva del Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 53,
+    name: 'Sentiero SUSAT',
+    area: 'Garda Trentino',
+    difficulty: 'E',
+    distanceKm: 10.5,
+    elevationGainM: 550,
+    startLat: 45.91,
+    startLon: 10.84,
+    description: 'Beautiful panoramic path in the mountains above Riva del Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 54,
+    name: 'Monte Tremalzo',
+    area: 'Valle di Ledro',
+    difficulty: 'E',
+    distanceKm: 12.0,
+    elevationGainM: 700,
+    startLat: 45.85,
+    startLon: 10.68,
+    description: 'Classic mountain in the Ledro Alps, popular in both summer and winter.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 55,
+    name: 'Lago d’Ampola',
+    area: 'Valle di Ledro',
+    difficulty: 'T',
+    distanceKm: 4.0,
+    elevationGainM: 50,
+    startLat: 45.86,
+    startLon: 10.73,
+    description: 'Easy walk around the small protected lake of Ampola.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
+  },
+  {
+    id: 56,
+    name: 'Cima Parì',
+    area: 'Valle di Ledro',
+    difficulty: 'EE',
+    distanceKm: 13.0,
+    elevationGainM: 950,
+    startLat: 45.85,
+    startLon: 10.69,
+    description: 'Demanding peak with historical interest from the Great War.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 57,
+    name: 'Bocca di Trat – Rifugio Pernici',
+    area: 'Garda Trentino',
+    difficulty: 'E',
+    distanceKm: 8.5,
+    elevationGainM: 650,
+    startLat: 45.90,
+    startLon: 10.81,
+    description: 'Nice hike to the Bocca di Trat pass and Rifugio Nino Pernici.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 58,
+    name: 'Monte Brione',
+    area: 'Riva del Garda',
+    difficulty: 'T',
+    distanceKm: 5.5,
+    elevationGainM: 250,
+    startLat: 45.88,
+    startLon: 10.86,
+    description: 'Easy and panoramic hill between Riva del Garda and Torbole.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 59,
+    name: 'Busatte – Tempesta',
+    area: 'Torbole / Garda Trentino',
+    difficulty: 'E',
+    distanceKm: 7.0,
+    elevationGainM: 350,
+    startLat: 45.87,
+    startLon: 10.88,
+    description: 'Scenic path above Torbole with continuous views over Lake Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 60,
+    name: 'Cima Rocchetta',
+    area: 'Garda Trentino',
+    difficulty: 'E',
+    distanceKm: 9.0,
+    elevationGainM: 700,
+    startLat: 45.89,
+    startLon: 10.82,
+    description: 'Panoramic peak in the mountains north of Riva del Garda.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 61,
+    name: 'Sentiero della Pace – Passo del Tonale',
     area: 'Val di Sole',
     difficulty: 'E',
     distanceKm: 12.0,
@@ -1583,11 +729,10 @@ export const trails = [
     startLat: 46.255,
     startLon: 10.59,
     description: 'Historical section of the Peace Path near Passo del Tonale.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 118,
+    id: 62,
     name: 'Rifugio Bozzi – Montozzo',
     area: 'Val di Sole / Adamello',
     difficulty: 'E',
@@ -1596,11 +741,10 @@ export const trails = [
     startLat: 46.28,
     startLon: 10.56,
     description: 'Hike to the historic Bozzi hut with WWI remains.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 119,
+    id: 63,
     name: 'Cima di Montozzo',
     area: 'Val di Sole',
     difficulty: 'EE',
@@ -1608,13 +752,11 @@ export const trails = [
     elevationGainM: 900,
     startLat: 46.275,
     startLon: 10.55,
-    description:
-      'Demanding peak above the Tonale pass with historical interest.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Demanding peak above the Tonale pass with historical interest.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 120,
+    id: 64,
     name: 'Lago di Pian Palù',
     area: 'Val di Peio',
     difficulty: 'T',
@@ -1622,13 +764,11 @@ export const trails = [
     elevationGainM: 120,
     startLat: 46.34,
     startLon: 10.68,
-    description:
-      'Easy and very scenic walk around the artificial lake of Pian Palù.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Easy and very scenic walk around the artificial lake of Pian Palù.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
   },
   {
-    id: 121,
+    id: 65,
     name: 'Rifugio Vioz – Monte Vioz',
     area: 'Val di Peio / Ortles-Cevedale',
     difficulty: 'EE',
@@ -1637,24 +777,22 @@ export const trails = [
     startLat: 46.36,
     startLon: 10.65,
     description: 'Long ascent to one of the highest huts in the Alps.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 122,
+    id: 66,
     name: 'Lago delle tre serore',
     area: 'Val di Peio',
     difficulty: 'E',
     distanceKm: 9.5,
     elevationGainM: 600,
     startLat: 46.35,
-    startLon: 10.7,
+    startLon: 10.70,
     description: 'Beautiful hike to a series of alpine lakes.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 123,
+    id: 67,
     name: 'Cima Venezia',
     area: 'Ortles-Cevedale',
     difficulty: 'EE',
@@ -1663,11 +801,10 @@ export const trails = [
     startLat: 46.37,
     startLon: 10.62,
     description: 'High and remote peak in the Ortles-Cevedale group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 124,
+    id: 68,
     name: 'Val Venezia',
     area: 'Val di Peio',
     difficulty: 'E',
@@ -1676,11 +813,10 @@ export const trails = [
     startLat: 46.355,
     startLon: 10.64,
     description: 'Wild valley walk in the Stelvio National Park.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 125,
+    id: 69,
     name: 'Rifugio Larcher al Cevedale',
     area: 'Val di Peio',
     difficulty: 'E',
@@ -1689,11 +825,10 @@ export const trails = [
     startLat: 46.365,
     startLon: 10.67,
     description: 'Long approach to the Larcher hut under the Cevedale glacier.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 126,
+    id: 70,
     name: 'Cima Marmotta',
     area: 'Ortles-Cevedale',
     difficulty: 'EE',
@@ -1702,11 +837,10 @@ export const trails = [
     startLat: 46.375,
     startLon: 10.66,
     description: 'Demanding high peak with glacier views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 127,
+    id: 71,
     name: 'Lago di Covel',
     area: 'Val di Peio',
     difficulty: 'T',
@@ -1715,11 +849,10 @@ export const trails = [
     startLat: 46.33,
     startLon: 10.69,
     description: 'Short and easy walk to the pretty Lago di Covel.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
   },
   {
-    id: 128,
+    id: 72,
     name: 'Monte Vioz from Peio',
     area: 'Val di Peio',
     difficulty: 'EE',
@@ -1728,11 +861,10 @@ export const trails = [
     startLat: 46.36,
     startLon: 10.68,
     description: 'Very long ascent from the valley to Monte Vioz.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 129,
+    id: 73,
     name: 'Sentiero dei Fiori – Passo del Tonale',
     area: 'Val di Sole',
     difficulty: 'E',
@@ -1741,24 +873,22 @@ export const trails = [
     startLat: 46.26,
     startLon: 10.58,
     description: 'Panoramic path with rich alpine flora near Passo del Tonale.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 130,
+    id: 74,
     name: 'Cima Castellaccio',
     area: 'Val di Sole',
     difficulty: 'E',
     distanceKm: 9.0,
     elevationGainM: 650,
     startLat: 46.27,
-    startLon: 10.6,
+    startLon: 10.60,
     description: 'Nice panoramic peak above the Tonale area.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 131,
+    id: 75,
     name: 'Lago di Malghette from Madonna di Campiglio',
     area: 'Brenta / Campiglio',
     difficulty: 'E',
@@ -1767,11 +897,10 @@ export const trails = [
     startLat: 46.23,
     startLon: 10.825,
     description: 'Popular hike to the Malghette lake with Brenta views.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 132,
+    id: 76,
     name: 'Rifugio Casinei',
     area: 'Brenta Dolomites',
     difficulty: 'T',
@@ -1780,37 +909,34 @@ export const trails = [
     startLat: 46.215,
     startLon: 10.85,
     description: 'Easy and very popular walk to Rifugio Casinei.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 133,
-    name: "Valle dell'Agola",
+    id: 77,
+    name: 'Valle dell\'Agola',
     area: 'Brenta Dolomites',
     difficulty: 'E',
     distanceKm: 11.0,
     elevationGainM: 600,
     startLat: 46.18,
-    startLon: 10.9,
+    startLon: 10.90,
     description: 'Quiet valley hike in the southern Brenta.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 134,
+    id: 78,
     name: 'Cima Grostè',
     area: 'Brenta Dolomites',
     difficulty: 'E',
     distanceKm: 7.0,
     elevationGainM: 400,
     startLat: 46.215,
-    startLon: 10.9,
+    startLon: 10.90,
     description: 'Easy high-altitude hike from the Grostè cable car.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 135,
+    id: 79,
     name: 'Rifugio Graffer – circular',
     area: 'Brenta Dolomites',
     difficulty: 'E',
@@ -1819,25 +945,22 @@ export const trails = [
     startLat: 46.21,
     startLon: 10.895,
     description: 'Nice circular walk around Rifugio Graffer.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 136,
-    name: "Sentiero dell'Orso – Val di Genova",
+    id: 80,
+    name: 'Sentiero dell\'Orso – Val di Genova',
     area: 'Adamello',
     difficulty: 'T',
     distanceKm: 6.0,
     elevationGainM: 150,
     startLat: 46.16,
     startLon: 10.65,
-    description:
-      'Easy family path in Val di Genova dedicated to the brown bear.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Easy family path in Val di Genova dedicated to the brown bear.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 137,
+    id: 81,
     name: 'Cascate di Nardis – extended',
     area: 'Val di Genova',
     difficulty: 'T',
@@ -1845,13 +968,11 @@ export const trails = [
     elevationGainM: 120,
     startLat: 46.165,
     startLon: 10.67,
-    description:
-      'Short walk to the famous Nardis waterfalls with optional extension.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Short walk to the famous Nardis waterfalls with optional extension.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300'
   },
   {
-    id: 138,
+    id: 82,
     name: 'Rifugio Stella Alpina – Val di Genova',
     area: 'Adamello',
     difficulty: 'E',
@@ -1860,24 +981,22 @@ export const trails = [
     startLat: 46.15,
     startLon: 10.62,
     description: 'Long valley walk deeper into Val di Genova.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 139,
+    id: 83,
     name: 'Lago di San Giuliano from Pontarso',
     area: 'Adamello',
     difficulty: 'EE',
     distanceKm: 15.0,
     elevationGainM: 900,
     startLat: 46.135,
-    startLon: 10.6,
+    startLon: 10.60,
     description: 'Demanding hike to the remote San Giuliano lake.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 140,
+    id: 84,
     name: 'Cima di Nambrone',
     area: 'Adamello-Presanella',
     difficulty: 'EE',
@@ -1886,24 +1005,22 @@ export const trails = [
     startLat: 46.205,
     startLon: 10.71,
     description: 'Challenging peak in the Presanella group.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 141,
+    id: 85,
     name: 'Rifugio Cornisello',
     area: 'Val Nambrone',
     difficulty: 'E',
     distanceKm: 7.0,
     elevationGainM: 400,
-    startLat: 46.2,
-    startLon: 10.7,
+    startLat: 46.20,
+    startLon: 10.70,
     description: 'Nice hike to the Cornisello hut and lakes.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 142,
+    id: 86,
     name: 'Lago Nero – Val Nambrone',
     area: 'Adamello-Presanella',
     difficulty: 'E',
@@ -1912,11 +1029,10 @@ export const trails = [
     startLat: 46.195,
     startLon: 10.69,
     description: 'Hike to the dark alpine lake in Val Nambrone.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 143,
+    id: 87,
     name: 'Cima Verme',
     area: 'Presanella',
     difficulty: 'EE',
@@ -1925,24 +1041,22 @@ export const trails = [
     startLat: 46.215,
     startLon: 10.68,
     description: 'Panoramic peak with views over the Presanella and Adamello.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 144,
+    id: 88,
     name: 'Malga Preghena',
     area: 'Val di Sole',
     difficulty: 'T',
     distanceKm: 6.0,
     elevationGainM: 250,
-    startLat: 46.3,
+    startLat: 46.30,
     startLon: 10.75,
     description: 'Easy walk to the panoramic Malga Preghena.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 145,
+    id: 89,
     name: 'Cima Mezzana',
     area: 'Val di Sole',
     difficulty: 'E',
@@ -1951,11 +1065,10 @@ export const trails = [
     startLat: 46.32,
     startLon: 10.78,
     description: 'Nice peak above Mezzana with views of the valley.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 146,
+    id: 90,
     name: 'Lago di Covel – circular',
     area: 'Val di Peio',
     difficulty: 'T',
@@ -1964,11 +1077,10 @@ export const trails = [
     startLat: 46.328,
     startLon: 10.695,
     description: 'Easy circular walk around Lago di Covel.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
   },
   {
-    id: 147,
+    id: 91,
     name: 'Monte Gabbiolo',
     area: 'Val di Sole',
     difficulty: 'E',
@@ -1977,11 +1089,10 @@ export const trails = [
     startLat: 46.29,
     startLon: 10.72,
     description: 'Panoramic hike with views over the Val di Sole.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
-    id: 148,
+    id: 92,
     name: 'Sentiero del Centenario – Tonale',
     area: 'Val di Sole',
     difficulty: 'E',
@@ -1989,34 +1100,704 @@ export const trails = [
     elevationGainM: 400,
     startLat: 46.258,
     startLon: 10.585,
-    description:
-      'Historical path commemorating the Great War around Passo del Tonale.',
-    guideUrl:
-      'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking',
+    description: 'Historical path commemorating the Great War around Passo del Tonale.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 93,
+    name: 'Cima Brenta Alta (approach)',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 14.0,
+    elevationGainM: 1200,
+    startLat: 46.195,
+    startLon: 10.89,
+    description: 'Long and demanding approach toward one of the highest peaks of the Brenta group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 94,
+    name: 'Rifugio Tuckett – Brenta',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 9.5,
+    elevationGainM: 700,
+    startLat: 46.205,
+    startLon: 10.875,
+    description: 'Classic hike to the historic Tuckett hut with spectacular views of the Brenta towers.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 95,
+    name: 'Valagola – Lago di Valagola',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 11.0,
+    elevationGainM: 550,
+    startLat: 46.175,
+    startLon: 10.91,
+    description: 'Beautiful valley walk leading to the peaceful Lago di Valagola.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 96,
+    name: 'Cima Sella from Rifugio Brentei',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 8.0,
+    elevationGainM: 650,
+    startLat: 46.19,
+    startLon: 10.885,
+    description: 'Challenging continuation from Rifugio Brentei toward Cima Sella.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 97,
+    name: 'Malga Flavona – Val di Tovel',
+    area: 'Val di Non / Brenta',
+    difficulty: 'E',
+    distanceKm: 10.5,
+    elevationGainM: 600,
+    startLat: 46.27,
+    startLon: 10.96,
+    description: 'Scenic hike from Lago di Tovel area up to Malga Flavona.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/tour/il-giro-del-lago-di-tovel_tour_2808342'
+  },
+  {
+    id: 98,
+    name: 'Cima Roma',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 13.0,
+    elevationGainM: 1100,
+    startLat: 46.21,
+    startLon: 10.86,
+    description: 'Demanding peak in the northern Brenta with wide panoramic views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 99,
+    name: 'Sentiero delle Bocchette Centrali (approach)',
+    area: 'Brenta Dolomites',
+    difficulty: 'EEA',
+    distanceKm: 7.5,
+    elevationGainM: 500,
+    startLat: 46.20,
+    startLon: 10.88,
+    description: 'Approach to the famous equipped Bocchette path (via ferrata experience required).',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 100,
+    name: 'Rifugio Alimonta',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 10.0,
+    elevationGainM: 800,
+    startLat: 46.185,
+    startLon: 10.895,
+    description: 'Hike to Rifugio Alimonta, a key base for the Bocchette routes.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 101,
+    name: 'Val di Fumo',
+    area: 'Adamello',
+    difficulty: 'E',
+    distanceKm: 16.0,
+    elevationGainM: 450,
+    startLat: 46.10,
+    startLon: 10.60,
+    description: 'Long and wild valley walk in the heart of the Adamello park.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 102,
+    name: 'Rifugio Mandron from Val di Genova',
+    area: 'Adamello',
+    difficulty: 'EE',
+    distanceKm: 15.0,
+    elevationGainM: 1050,
+    startLat: 46.155,
+    startLon: 10.61,
+    description: 'Classic long approach to the Mandron hut under the Adamello glacier.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 103,
+    name: 'Lago di Vedretta',
+    area: 'Adamello',
+    difficulty: 'EE',
+    distanceKm: 12.0,
+    elevationGainM: 900,
+    startLat: 46.14,
+    startLon: 10.58,
+    description: 'High mountain lake at the foot of the Adamello glaciers.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 104,
+    name: 'Cima Presanella – normal route',
+    area: 'Adamello-Presanella',
+    difficulty: 'EE',
+    distanceKm: 17.0,
+    elevationGainM: 1500,
+    startLat: 46.22,
+    startLon: 10.67,
+    description: 'Long ascent to the highest peak entirely in Trentino.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 105,
+    name: 'Rifugio Segantini – Val Nambrone',
+    area: 'Adamello-Presanella',
+    difficulty: 'E',
+    distanceKm: 9.0,
+    elevationGainM: 650,
+    startLat: 46.21,
+    startLon: 10.72,
+    description: 'Beautiful hike to Rifugio Segantini with views of the Presanella group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 106,
+    name: 'Lago delle Salare',
+    area: 'Val di Non',
+    difficulty: 'E',
+    distanceKm: 8.5,
+    elevationGainM: 500,
+    startLat: 46.31,
+    startLon: 10.99,
+    description: 'Pleasant hike to the alpine lake of Salare.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 107,
+    name: 'Cima Boai',
+    area: 'Val di Non / Maddalene',
+    difficulty: 'E',
+    distanceKm: 11.5,
+    elevationGainM: 750,
+    startLat: 46.38,
+    startLon: 11.02,
+    description: 'Panoramic peak in the quiet Maddalene chain.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 108,
+    name: 'Monte Roen – full traverse',
+    area: 'Val di Non',
+    difficulty: 'EE',
+    distanceKm: 17.0,
+    elevationGainM: 1000,
+    startLat: 46.34,
+    startLon: 11.14,
+    description: 'Long ridge traverse of Monte Roen between Val di Non and South Tyrol.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 109,
+    name: 'Lago di Santa Maria',
+    area: 'Val di Non',
+    difficulty: 'T',
+    distanceKm: 5.0,
+    elevationGainM: 150,
+    startLat: 46.35,
+    startLon: 11.08,
+    description: 'Easy and scenic walk to the small Lago di Santa Maria.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
+  },
+  {
+    id: 110,
+    name: 'Cima Peller from Malga Tassulla',
+    area: 'Val di Non',
+    difficulty: 'E',
+    distanceKm: 10.0,
+    elevationGainM: 700,
+    startLat: 46.29,
+    startLon: 10.97,
+    description: 'Classic ascent of Cima Peller with wide views over the Brenta.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 111,
+    name: 'Sentiero della Pace – Passo del Tonale section',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 12.0,
+    elevationGainM: 400,
+    startLat: 46.255,
+    startLon: 10.59,
+    description: 'Historical section of the Peace Path near Passo del Tonale.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 112,
+    name: 'Rifugio Bozzi – Montozzo',
+    area: 'Val di Sole / Adamello',
+    difficulty: 'E',
+    distanceKm: 9.0,
+    elevationGainM: 550,
+    startLat: 46.28,
+    startLon: 10.56,
+    description: 'Hike to the historic Bozzi hut with WWI remains.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 113,
+    name: 'Cima di Montozzo',
+    area: 'Val di Sole',
+    difficulty: 'EE',
+    distanceKm: 11.0,
+    elevationGainM: 900,
+    startLat: 46.275,
+    startLon: 10.55,
+    description: 'Demanding peak above the Tonale pass with historical interest.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 114,
+    name: 'Lago di Pian Palù',
+    area: 'Val di Peio',
+    difficulty: 'T',
+    distanceKm: 6.5,
+    elevationGainM: 120,
+    startLat: 46.34,
+    startLon: 10.68,
+    description: 'Easy and very scenic walk around the artificial lake of Pian Palù.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
+  },
+  {
+    id: 115,
+    name: 'Rifugio Vioz – Monte Vioz',
+    area: 'Val di Peio / Ortles-Cevedale',
+    difficulty: 'EE',
+    distanceKm: 12.0,
+    elevationGainM: 1100,
+    startLat: 46.36,
+    startLon: 10.65,
+    description: 'Long ascent to one of the highest huts in the Alps.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 116,
+    name: 'Lago delle tre serore',
+    area: 'Val di Peio',
+    difficulty: 'E',
+    distanceKm: 9.5,
+    elevationGainM: 600,
+    startLat: 46.35,
+    startLon: 10.70,
+    description: 'Beautiful hike to a series of alpine lakes.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 117,
+    name: 'Cima Venezia',
+    area: 'Ortles-Cevedale',
+    difficulty: 'EE',
+    distanceKm: 14.0,
+    elevationGainM: 1200,
+    startLat: 46.37,
+    startLon: 10.62,
+    description: 'High and remote peak in the Ortles-Cevedale group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 118,
+    name: 'Val Venezia',
+    area: 'Val di Peio',
+    difficulty: 'E',
+    distanceKm: 11.0,
+    elevationGainM: 500,
+    startLat: 46.355,
+    startLon: 10.64,
+    description: 'Wild valley walk in the Stelvio National Park.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 119,
+    name: 'Rifugio Larcher al Cevedale',
+    area: 'Val di Peio',
+    difficulty: 'E',
+    distanceKm: 13.0,
+    elevationGainM: 800,
+    startLat: 46.365,
+    startLon: 10.67,
+    description: 'Long approach to the Larcher hut under the Cevedale glacier.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 120,
+    name: 'Cima Marmotta',
+    area: 'Ortles-Cevedale',
+    difficulty: 'EE',
+    distanceKm: 15.0,
+    elevationGainM: 1300,
+    startLat: 46.375,
+    startLon: 10.66,
+    description: 'Demanding high peak with glacier views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 121,
+    name: 'Lago di Covel',
+    area: 'Val di Peio',
+    difficulty: 'T',
+    distanceKm: 4.5,
+    elevationGainM: 180,
+    startLat: 46.33,
+    startLon: 10.69,
+    description: 'Short and easy walk to the pretty Lago di Covel.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
+  },
+  {
+    id: 122,
+    name: 'Monte Vioz from Peio',
+    area: 'Val di Peio',
+    difficulty: 'EE',
+    distanceKm: 16.0,
+    elevationGainM: 1600,
+    startLat: 46.36,
+    startLon: 10.68,
+    description: 'Very long ascent from the valley to Monte Vioz.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 123,
+    name: 'Sentiero dei Fiori – Passo del Tonale',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 8.0,
+    elevationGainM: 350,
+    startLat: 46.26,
+    startLon: 10.58,
+    description: 'Panoramic path with rich alpine flora near Passo del Tonale.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 124,
+    name: 'Cima Castellaccio',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 9.0,
+    elevationGainM: 650,
+    startLat: 46.27,
+    startLon: 10.60,
+    description: 'Nice panoramic peak above the Tonale area.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 125,
+    name: 'Lago di Malghette from Madonna di Campiglio',
+    area: 'Brenta / Campiglio',
+    difficulty: 'E',
+    distanceKm: 10.0,
+    elevationGainM: 500,
+    startLat: 46.23,
+    startLon: 10.825,
+    description: 'Popular hike to the Malghette lake with Brenta views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 126,
+    name: 'Rifugio Casinei',
+    area: 'Brenta Dolomites',
+    difficulty: 'T',
+    distanceKm: 5.5,
+    elevationGainM: 300,
+    startLat: 46.215,
+    startLon: 10.85,
+    description: 'Easy and very popular walk to Rifugio Casinei.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 127,
+    name: 'Valle dell\'Agola',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 11.0,
+    elevationGainM: 600,
+    startLat: 46.18,
+    startLon: 10.90,
+    description: 'Quiet valley hike in the southern Brenta.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 128,
+    name: 'Cima Grostè',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 7.0,
+    elevationGainM: 400,
+    startLat: 46.215,
+    startLon: 10.90,
+    description: 'Easy high-altitude hike from the Grostè cable car.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 129,
+    name: 'Rifugio Graffer – circular',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 8.5,
+    elevationGainM: 350,
+    startLat: 46.21,
+    startLon: 10.895,
+    description: 'Nice circular walk around Rifugio Graffer.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 130,
+    name: 'Sentiero dell\'Orso – Val di Genova',
+    area: 'Adamello',
+    difficulty: 'T',
+    distanceKm: 6.0,
+    elevationGainM: 150,
+    startLat: 46.16,
+    startLon: 10.65,
+    description: 'Easy family path in Val di Genova dedicated to the brown bear.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 131,
+    name: 'Cascate di Nardis – extended',
+    area: 'Val di Genova',
+    difficulty: 'T',
+    distanceKm: 5.0,
+    elevationGainM: 120,
+    startLat: 46.165,
+    startLon: 10.67,
+    description: 'Short walk to the famous Nardis waterfalls with optional extension.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300'
+  },
+  {
+    id: 132,
+    name: 'Rifugio Stella Alpina – Val di Genova',
+    area: 'Adamello',
+    difficulty: 'E',
+    distanceKm: 14.0,
+    elevationGainM: 700,
+    startLat: 46.15,
+    startLon: 10.62,
+    description: 'Long valley walk deeper into Val di Genova.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 133,
+    name: 'Lago di San Giuliano from Pontarso',
+    area: 'Adamello',
+    difficulty: 'EE',
+    distanceKm: 15.0,
+    elevationGainM: 900,
+    startLat: 46.135,
+    startLon: 10.60,
+    description: 'Demanding hike to the remote San Giuliano lake.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 134,
+    name: 'Cima di Nambrone',
+    area: 'Adamello-Presanella',
+    difficulty: 'EE',
+    distanceKm: 13.0,
+    elevationGainM: 1100,
+    startLat: 46.205,
+    startLon: 10.71,
+    description: 'Challenging peak in the Presanella group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 135,
+    name: 'Rifugio Cornisello',
+    area: 'Val Nambrone',
+    difficulty: 'E',
+    distanceKm: 7.0,
+    elevationGainM: 400,
+    startLat: 46.20,
+    startLon: 10.70,
+    description: 'Nice hike to the Cornisello hut and lakes.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 136,
+    name: 'Lago Nero – Val Nambrone',
+    area: 'Adamello-Presanella',
+    difficulty: 'E',
+    distanceKm: 9.0,
+    elevationGainM: 550,
+    startLat: 46.195,
+    startLon: 10.69,
+    description: 'Hike to the dark alpine lake in Val Nambrone.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 137,
+    name: 'Cima Verme',
+    area: 'Presanella',
+    difficulty: 'EE',
+    distanceKm: 12.0,
+    elevationGainM: 1000,
+    startLat: 46.215,
+    startLon: 10.68,
+    description: 'Panoramic peak with views over the Presanella and Adamello.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 138,
+    name: 'Malga Preghena',
+    area: 'Val di Sole',
+    difficulty: 'T',
+    distanceKm: 6.0,
+    elevationGainM: 250,
+    startLat: 46.30,
+    startLon: 10.75,
+    description: 'Easy walk to the panoramic Malga Preghena.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 139,
+    name: 'Cima Mezzana',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 10.0,
+    elevationGainM: 700,
+    startLat: 46.32,
+    startLon: 10.78,
+    description: 'Nice peak above Mezzana with views of the valley.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 140,
+    name: 'Lago di Covel – circular',
+    area: 'Val di Peio',
+    difficulty: 'T',
+    distanceKm: 5.5,
+    elevationGainM: 200,
+    startLat: 46.328,
+    startLon: 10.695,
+    description: 'Easy circular walk around Lago di Covel.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/natura/laghi'
+  },
+  {
+    id: 141,
+    name: 'Monte Gabbiolo',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 9.5,
+    elevationGainM: 650,
+    startLat: 46.29,
+    startLon: 10.72,
+    description: 'Panoramic hike with views over the Val di Sole.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 142,
+    name: 'Sentiero del Centenario – Tonale',
+    area: 'Val di Sole',
+    difficulty: 'E',
+    distanceKm: 8.0,
+    elevationGainM: 400,
+    startLat: 46.258,
+    startLon: 10.585,
+    description: 'Historical path commemorating the Great War around Passo del Tonale.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 143,
+    name: 'Cima Brenta Alta (approach)',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 14.0,
+    elevationGainM: 1200,
+    startLat: 46.195,
+    startLon: 10.89,
+    description: 'Long and demanding approach toward one of the highest peaks of the Brenta group.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 144,
+    name: 'Rifugio Tuckett – Brenta',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 9.5,
+    elevationGainM: 700,
+    startLat: 46.205,
+    startLon: 10.875,
+    description: 'Classic hike to the historic Tuckett hut with spectacular views of the Brenta towers.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 145,
+    name: 'Valagola – Lago di Valagola',
+    area: 'Brenta Dolomites',
+    difficulty: 'E',
+    distanceKm: 11.0,
+    elevationGainM: 550,
+    startLat: 46.175,
+    startLon: 10.91,
+    description: 'Beautiful valley walk leading to the peaceful Lago di Valagola.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 146,
+    name: 'Cima Sella from Rifugio Brentei',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 8.0,
+    elevationGainM: 650,
+    startLat: 46.19,
+    startLon: 10.885,
+    description: 'Challenging continuation from Rifugio Brentei toward Cima Sella.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
+  },
+  {
+    id: 147,
+    name: 'Malga Flavona – Val di Tovel',
+    area: 'Val di Non / Brenta',
+    difficulty: 'E',
+    distanceKm: 10.5,
+    elevationGainM: 600,
+    startLat: 46.27,
+    startLon: 10.96,
+    description: 'Scenic hike from Lago di Tovel area up to Malga Flavona.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/tour/il-giro-del-lago-di-tovel_tour_2808342'
+  },
+  {
+    id: 148,
+    name: 'Cima Roma',
+    area: 'Brenta Dolomites',
+    difficulty: 'EE',
+    distanceKm: 13.0,
+    elevationGainM: 1100,
+    startLat: 46.21,
+    startLon: 10.86,
+    description: 'Demanding peak in the northern Brenta with wide panoramic views.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 149,
     name: "Cima d'Asta from Malga Valcigolera",
-    area: "Lagorai",
-    difficulty: "EE",
+    area: 'Lagorai',
+    difficulty: 'EE',
     distanceKm: 16.0,
     elevationGainM: 1300,
     startLat: 46.1400,
     startLon: 11.5500,
-    description: "Long and rewarding ascent to the highest peak of the Lagorai chain.",
-    guideUrl: "https://www.visittrentino.info/it/guida/attivita-outdoor/trekking"
+    description: 'Long and rewarding ascent to the highest peak of the Lagorai chain.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 150,
-    name: "Lago di Erdemolo",
-    area: "Valle dei Mocheni",
-    difficulty: "E",
+    name: 'Lago di Erdemolo',
+    area: 'Valle dei Mocheni',
+    difficulty: 'E',
     distanceKm: 9.5,
     elevationGainM: 550,
     startLat: 46.1200,
     startLon: 11.3200,
-    description: "Classic hike to the beautiful alpine lake of Erdemolo.",
-    guideUrl: "https://www.visittrentino.info/it/guida/attivita-outdoor/trekking"
+    description: 'Classic hike to the beautiful alpine lake of Erdemolo.',
+    guideUrl: 'https://www.visittrentino.info/it/guida/attivita-outdoor/trekking'
   },
   {
     id: 151,
@@ -2328,7 +2109,7 @@ export const trails = [
     startLat: 46.4100,
     startLon: 11.5750,
     description: "Easy and very popular walk around the famous Lago di Carezza.",
-    guideUrl: "https://www.visittrentino.info/it/guida/attivita-outdoor/trekking"
+    guideUrl: "https://www.visittrentino.info/it/guida/natura/laghi/lago-di-carezza_md_2268"
   },
   {
     id: 177,
@@ -2544,7 +2325,7 @@ export const trails = [
     startLat: 46.1650,
     startLon: 10.6600,
     description: "Easy path visiting several waterfalls in Val di Genova.",
-    guideUrl: "https://www.visittrentino.info/it/guida/attivita-outdoor/trekking"
+    guideUrl: "https://www.visittrentino.info/it/guida/natura/cascate/cascate-nardis_md_2300"
   },
   {
     id: 195,

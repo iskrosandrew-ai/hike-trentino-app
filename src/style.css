@@ -369,3 +369,22 @@ input:focus {
 .credits strong {
   color: #2b6cb0;
 }
+/* Fix language buttons on mobile */
+@media (max-width: 768px) {
+  .lang-switcher {
+    position: static;
+    justify-content: center;
+    margin-bottom: 12px;
+    top: auto;
+    right: auto;
+  }
+
+  header {
+    padding-top: 8px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
+
