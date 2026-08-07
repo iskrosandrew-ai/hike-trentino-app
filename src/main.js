@@ -1,5 +1,4 @@
 import './style.css'
-import { trails } from './data/trails.js'
 import { supabase } from './supabase.js'
 
 const app = document.querySelector('#app')
@@ -65,7 +64,8 @@ const translations = {
     forgotPassword: "Forgot password?",
     resetPassword: "Reset password",
     sendResetLink: "Send reset link",
-    backToLogin: "Back to Sign in"
+    backToLogin: "Back to Sign in",
+    loadingTrails: "Loading trails from database..."
   },
   it: {
     title: "Hike Trentino",
@@ -126,7 +126,8 @@ const translations = {
     forgotPassword: "Password dimenticata?",
     resetPassword: "Reimposta password",
     sendResetLink: "Invia link di reset",
-    backToLogin: "Torna al login"
+    backToLogin: "Torna al login",
+    loadingTrails: "Caricamento sentieri dal database..."
   },
   de: {
     title: "Hike Trentino",
@@ -187,15 +188,20 @@ const translations = {
     forgotPassword: "Passwort vergessen?",
     resetPassword: "Passwort zurücksetzen",
     sendResetLink: "Reset-Link senden",
-    backToLogin: "Zurück zum Login"
+    backToLogin: "Zurück zum Login",
+    loadingTrails: "Wanderwege werden aus der Datenbank geladen..."
   }
 }
 
 // ---------- State ----------
+let trails = []
+let trailsLoading = true
+let trailsError = null
+
 let lang = 'en'
 let currentUser = null
 let showAuthModal = false
-let authMode = 'login' // 'login' | 'signup' | 'forgot'
+let authMode = 'login'
 let authEmail = ''
 let authPassword = ''
 let authFirstName = ''
@@ -369,6 +375,43 @@ function cacheKey(lat, lon, date) {
   return `${lat.toFixed(3)},${lon.toFixed(3)},${date}`
 }
 
+// ---------- Load trails from Supabase ----------
+async function loadTrails() {
+  trailsLoading = true
+  trailsError = null
+  render()
+
+  const { data, error } = await supabase
+    .from('trails')
+    .select('*')
+    .eq('is_active', true)
+    .order('id', { ascending: true })
+
+  if (error) {
+    console.error('Error loading trails:', error)
+    trailsError = error.message
+    trailsLoading = false
+    render()
+    return
+  }
+
+  trails = data.map(t => ({
+    id: t.id,
+    name: t.name,
+    area: t.area,
+    difficulty: t.difficulty,
+    distanceKm: Number(t.distance_km),
+    elevationGainM: t.elevation_gain_m,
+    startLat: Number(t.start_lat),
+    startLon: Number(t.start_lon),
+    description: t.description,
+    guideUrl: t.guide_url
+  }))
+
+  trailsLoading = false
+  render()
+}
+
 // ---------- Auth ----------
 async function checkUser() {
   const { data: { user } } = await supabase.auth.getUser()
@@ -412,7 +455,7 @@ async function handleSignup() {
   authMessage = ''
   render()
 
-  const { data, error } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email: authEmail,
     password: authPassword,
     options: {
@@ -515,6 +558,8 @@ async function fetchWeatherFor(lat, lon, date) {
 
 // ---------- Search ----------
 async function doSearch() {
+  if (trailsLoading || trails.length === 0) return
+
   errors.departure = !departure.lat
   errors.date = !selectedDate
   errors.sortBy = !sortBy
@@ -713,6 +758,12 @@ function render() {
         <p>${t('subtitle')}</p>
       </header>
 
+      ${trailsLoading ? `
+        <div class="no-results">${t('loadingTrails')}</div>
+      ` : trailsError ? `
+        <div class="no-results" style="color:#c53030">Error: ${trailsError}</div>
+      ` : ''}
+
       ${showAuthModal ? `
         <div class="auth-modal-overlay">
           <div class="auth-modal">
@@ -817,7 +868,7 @@ function render() {
         </div>
 
         <div class="filter-group" style="align-self:end">
-          <button id="searchBtn" class="search-btn">🔍 ${t('search')}</button>
+          <button id="searchBtn" class="search-btn" ${trailsLoading ? 'disabled' : ''}>🔍 ${t('search')}</button>
         </div>
 
         <div class="filter-group" style="align-self:end">
@@ -950,7 +1001,6 @@ function render() {
     else handleForgotPassword()
   })
 
-  // Auth inputs
   ;['authEmail', 'authPassword', 'authFirstName', 'authLastName', 'authCity'].forEach(id => {
     const el = document.getElementById(id)
     if (el) {
@@ -965,30 +1015,48 @@ function render() {
   })
 
   // Filters
-  document.getElementById('difficulty').value = filters.difficulty
-  document.getElementById('difficulty').addEventListener('change', e => filters.difficulty = e.target.value)
+  const difficultyEl = document.getElementById('difficulty')
+  if (difficultyEl) {
+    difficultyEl.value = filters.difficulty
+    difficultyEl.addEventListener('change', e => filters.difficulty = e.target.value)
+  }
 
-  document.getElementById('maxDistance').addEventListener('change', e => filters.maxDistance = e.target.value)
-  document.getElementById('minElevation').addEventListener('change', e => filters.minElevation = e.target.value)
-  document.getElementById('maxElevation').addEventListener('change', e => filters.maxElevation = e.target.value)
+  const maxDistanceEl = document.getElementById('maxDistance')
+  if (maxDistanceEl) maxDistanceEl.addEventListener('change', e => filters.maxDistance = e.target.value)
 
-  document.getElementById('sortBy').value = sortBy
-  document.getElementById('sortBy').addEventListener('change', e => {
-    sortBy = e.target.value
-    errors.sortBy = false
-    sortDir = 'asc'
-    render()
-  })
+  const minElevationEl = document.getElementById('minElevation')
+  if (minElevationEl) minElevationEl.addEventListener('change', e => filters.minElevation = e.target.value)
 
-  document.getElementById('sortDir').value = sortDir
-  document.getElementById('sortDir').addEventListener('change', e => sortDir = e.target.value)
+  const maxElevationEl = document.getElementById('maxElevation')
+  if (maxElevationEl) maxElevationEl.addEventListener('change', e => filters.maxElevation = e.target.value)
 
-  document.getElementById('dateSelect').addEventListener('change', e => {
-    selectedDate = e.target.value
-    errors.date = false
-  })
+  const sortByEl = document.getElementById('sortBy')
+  if (sortByEl) {
+    sortByEl.value = sortBy
+    sortByEl.addEventListener('change', e => {
+      sortBy = e.target.value
+      errors.sortBy = false
+      sortDir = 'asc'
+      render()
+    })
+  }
 
-  document.getElementById('searchBtn').addEventListener('click', doSearch)
+  const sortDirEl = document.getElementById('sortDir')
+  if (sortDirEl) {
+    sortDirEl.value = sortDir
+    sortDirEl.addEventListener('change', e => sortDir = e.target.value)
+  }
+
+  const dateSelectEl = document.getElementById('dateSelect')
+  if (dateSelectEl) {
+    dateSelectEl.addEventListener('change', e => {
+      selectedDate = e.target.value
+      errors.date = false
+    })
+  }
+
+  const searchBtn = document.getElementById('searchBtn')
+  if (searchBtn) searchBtn.addEventListener('click', doSearch)
 
   const clearBtn = document.getElementById('clearDeparture')
   if (clearBtn) clearBtn.addEventListener('click', () => {
@@ -1000,7 +1068,8 @@ function render() {
     render()
   })
 
-  document.getElementById('resetBtn').addEventListener('click', () => {
+  const resetBtn = document.getElementById('resetBtn')
+  if (resetBtn) resetBtn.addEventListener('click', () => {
     filters = { difficulty: 'all', maxDistance: '', minElevation: '', maxElevation: '' }
     departure = { name: '', lat: null, lon: null }
     inputValue = ''
@@ -1015,12 +1084,14 @@ function render() {
   })
 
   const input = document.getElementById('departureInput')
-  let timer
-  input.addEventListener('input', e => {
-    inputValue = e.target.value
-    clearTimeout(timer)
-    timer = setTimeout(() => fetchSuggestions(inputValue), 300)
-  })
+  if (input) {
+    let timer
+    input.addEventListener('input', e => {
+      inputValue = e.target.value
+      clearTimeout(timer)
+      timer = setTimeout(() => fetchSuggestions(inputValue), 300)
+    })
+  }
 
   document.querySelectorAll('.trail-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -1031,5 +1102,10 @@ function render() {
   updateSuggestionsOnly()
 }
 
-// Start
-checkUser()
+// ---------- Start ----------
+async function init() {
+  await loadTrails()
+  await checkUser()
+}
+
+init()
