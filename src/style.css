@@ -541,3 +541,53 @@ input:focus {
     gap: 0;
   }
 }
+
+/* Favorite & Done buttons */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.icon-btn:hover {
+  transform: scale(1.08);
+  background: #edf2f7;
+}
+
+/* Favorite */
+.favorite-btn {
+  color: #cbd5e0;
+}
+
+.favorite-btn.active {
+  background: #fff5f5;
+  border-color: #feb2b2;
+  color: #e53e3e;
+}
+
+/* Done */
+.done-btn {
+  color: #cbd5e0;          /* light grey when not done */
+}
+
+.done-btn.active {
+  background: #f0fff4;
+  border-color: #9ae6b4;
+  color: #38a169;          /* green when done */
+}
