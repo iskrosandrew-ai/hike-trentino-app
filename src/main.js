@@ -7,6 +7,7 @@ import { loadFavorites, toggleFavorite } from './services/favorites.js'
 import { loadCompleted, toggleCompleted } from './services/completed.js'
 import { render } from './components/render.js'
 import { t } from './utils/helpers.js'
+import { trackEvent } from './services/analytics.js'
 
 // ---------- Event binding ----------
 function bindEvents() {
@@ -14,6 +15,7 @@ function bindEvents() {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       state.lang = btn.dataset.lang
+      trackEvent('language_changed', { language: state.lang })
       render()
       bindEvents()
     })
@@ -35,6 +37,7 @@ function bindEvents() {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
       await handleLogout()
+      trackEvent('logout')
       render()
       bindEvents()
     })
@@ -90,14 +93,17 @@ function bindEvents() {
       else if (state.authMode === 'signup') success = await handleSignup()
       else success = await handleForgotPassword()
 
+      if (success) {
+        if (state.authMode === 'login') {
+          trackEvent('login')
+          await loadFavorites()
+        } else if (state.authMode === 'signup') {
+          trackEvent('signup')
+        }
+      }
+
       render()
       bindEvents()
-
-      if (success && state.authMode === 'login') {
-        await loadFavorites()
-        render()
-        bindEvents()
-      }
     })
   }
 
@@ -212,15 +218,20 @@ function bindEvents() {
     })
   }
 
-  // Trail cards + Favorite buttons
+  // Trail cards
   document.querySelectorAll('.trail-card').forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't open guide if clicking the favorite button
-      if (e.target.closest('.favorite-btn')) return
+      // Don't open guide if clicking favorite or done button
+      if (e.target.closest('.favorite-btn') || e.target.closest('.done-btn')) return
+
+      const trailId = Number(card.dataset.id)
+      trackEvent('trail_clicked', { trail_id: trailId })
+
       if (card.dataset.url) window.open(card.dataset.url, '_blank')
     })
   })
 
+  // Favorite buttons
   document.querySelectorAll('.favorite-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation()
@@ -236,30 +247,43 @@ function bindEvents() {
         return
       }
 
+      if (result.success) {
+        trackEvent(state.favorites.includes(trailId) ? 'favorite_added' : 'favorite_removed', {
+          trail_id: trailId
+        })
+      }
+
       render()
       bindEvents()
     })
   })
-    // Done buttons
-    document.querySelectorAll('.done-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.stopPropagation()
-        const trailId = Number(btn.dataset.id)
-        const result = await toggleCompleted(trailId)
-  
-        if (result.needsLogin) {
-          alert(t('loginRequired'))
-          state.showAuthModal = true
-          state.authMode = 'login'
-          render()
-          bindEvents()
-          return
-        }
-  
+
+  // Done buttons
+  document.querySelectorAll('.done-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation()
+      const trailId = Number(btn.dataset.id)
+      const result = await toggleCompleted(trailId)
+
+      if (result.needsLogin) {
+        alert(t('loginRequired'))
+        state.showAuthModal = true
+        state.authMode = 'login'
         render()
         bindEvents()
-      })
+        return
+      }
+
+      if (result.success) {
+        trackEvent(state.completed.includes(trailId) ? 'trail_completed' : 'trail_uncompleted', {
+          trail_id: trailId
+        })
+      }
+
+      render()
+      bindEvents()
     })
+  })
 
   updateSuggestionsOnly()
 }
@@ -296,9 +320,13 @@ async function init() {
   await checkUser()
   if (state.currentUser) {
     await loadFavorites()
+    await loadCompleted()
   }
   render()
   bindEvents()
+
+  // Track app open
+  trackEvent('app_opened')
 }
 
 init()

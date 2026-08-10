@@ -1,6 +1,7 @@
 import { state } from '../state.js'
 import { getStraightLineKm, getDrivingDistanceKm, calcSuitability, calcRecommendationScore, getRecommendationReason, difficultyValue } from '../utils/helpers.js'
 import { fetchWeatherFor } from './weather.js'
+import { trackEvent } from './analytics.js'
 
 export async function fetchSuggestions(query) {
   if (query.length < 2) {
@@ -126,5 +127,17 @@ export async function doSearch() {
 
   state.results = filtered.slice(0, 10)
   state.weatherLoading = false
+
+  // Track the search
+  trackEvent('search_performed', {
+    difficulty: state.filters.difficulty,
+    max_distance: state.filters.maxDistance || null,
+    min_elevation: state.filters.minElevation || null,
+    max_elevation: state.filters.maxElevation || null,
+    sort_by: state.sortBy,
+    results_count: state.results.length,
+    departure: state.departure.name
+  })
+
   return true
 }
