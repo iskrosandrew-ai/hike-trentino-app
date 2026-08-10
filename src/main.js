@@ -5,6 +5,7 @@ import { checkUser, handleLogin, handleSignup, handleForgotPassword, handleLogou
 import { doSearch, fetchSuggestions, selectPlace } from './services/search.js'
 import { loadFavorites, toggleFavorite } from './services/favorites.js'
 import { loadCompleted, toggleCompleted } from './services/completed.js'
+import { loadNotifications, markAsRead, markAllAsRead } from './services/notifications.js'
 import { render } from './components/render.js'
 import { t } from './utils/helpers.js'
 import { trackEvent } from './services/analytics.js'
@@ -16,6 +17,98 @@ function bindEvents() {
     btn.addEventListener('click', () => {
       state.lang = btn.dataset.lang
       trackEvent('language_changed', { language: state.lang })
+      render()
+      bindEvents()
+    })
+  })
+
+  // Notifications
+  const notificationBtn = document.getElementById('notificationBtn')
+  if (notificationBtn) {
+    notificationBtn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      state.showNotifications = !state.showNotifications
+      render()
+      bindEvents()
+    })
+  }
+
+  document.querySelectorAll('.notification-item').forEach(item => {
+    item.addEventListener('click', async () => {
+      const id = Number(item.dataset.id)
+      await markAsRead(id)
+      render()
+      bindEvents()
+    })
+  })
+
+  const markAllBtn = document.getElementById('markAllReadBtn')
+  if (markAllBtn) {
+    markAllBtn.addEventListener('click', async (e) => {
+      e.stopPropagation()
+      await markAllAsRead()
+      render()
+      bindEvents()
+    })
+  }
+
+  // Close notifications when clicking outside
+  document.addEventListener('click', (e) => {
+    if (state.showNotifications && !e.target.closest('.notification-wrapper')) {
+      state.showNotifications = false
+      render()
+      bindEvents()
+    }
+  })
+
+  // Go to Profile page
+  const profileBtn = document.getElementById('profileBtn')
+  if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+      state.currentPage = 'profile'
+      state.showNotifications = false
+      render()
+      bindEvents()
+    })
+  }
+
+  // Back to Home from Profile
+  const backToHomeBtn = document.getElementById('backToHomeBtn')
+  if (backToHomeBtn) {
+    backToHomeBtn.addEventListener('click', () => {
+      state.currentPage = 'home'
+      render()
+      bindEvents()
+    })
+  }
+
+  // Stats filter
+  const statsFilterEl = document.getElementById('statsFilter')
+  if (statsFilterEl) {
+    statsFilterEl.addEventListener('change', (e) => {
+      state.statsFilter = e.target.value
+      render()
+      bindEvents()
+    })
+  }
+
+  // Remove from favorites (Profile page)
+  document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation()
+      const trailId = Number(btn.dataset.id)
+      await toggleFavorite(trailId)
+      render()
+      bindEvents()
+    })
+  })
+
+  // Remove from completed (Profile page)
+  document.querySelectorAll('.remove-completed-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation()
+      const trailId = Number(btn.dataset.id)
+      await toggleCompleted(trailId)
       render()
       bindEvents()
     })
@@ -38,6 +131,7 @@ function bindEvents() {
     logoutBtn.addEventListener('click', async () => {
       await handleLogout()
       trackEvent('logout')
+      state.currentPage = 'home'
       render()
       bindEvents()
     })
@@ -97,6 +191,8 @@ function bindEvents() {
         if (state.authMode === 'login') {
           trackEvent('login')
           await loadFavorites()
+          await loadCompleted()
+          await loadNotifications()
         } else if (state.authMode === 'signup') {
           trackEvent('signup')
         }
@@ -221,7 +317,6 @@ function bindEvents() {
   // Trail cards
   document.querySelectorAll('.trail-card').forEach(card => {
     card.addEventListener('click', (e) => {
-      // Don't open guide if clicking favorite or done button
       if (e.target.closest('.favorite-btn') || e.target.closest('.done-btn')) return
 
       const trailId = Number(card.dataset.id)
@@ -318,14 +413,16 @@ function updateSuggestionsOnly() {
 async function init() {
   await loadTrails()
   await checkUser()
+
   if (state.currentUser) {
     await loadFavorites()
     await loadCompleted()
+    await loadNotifications()
   }
+
   render()
   bindEvents()
 
-  // Track app open
   trackEvent('app_opened')
 }
 

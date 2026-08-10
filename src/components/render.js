@@ -2,9 +2,117 @@ import { state } from '../state.js'
 import { t, getNext10Days, formatDateLabel, getWeatherDescription, difficultyLabel } from '../utils/helpers.js'
 import { isFavorite } from '../services/favorites.js'
 import { isCompleted } from '../services/completed.js'
+import { getCompletedStats } from '../services/profile.js'
 
 export function render() {
   const app = document.querySelector('#app')
+
+  // ====================== PROFILE PAGE ======================
+  if (state.currentPage === 'profile') {
+    const stats = getCompletedStats()
+    const user = state.currentUser
+    const firstName = user?.user_metadata?.first_name || ''
+    const lastName = user?.user_metadata?.last_name || ''
+    const city = user?.user_metadata?.city || ''
+
+    const favoriteTrails = state.trails.filter(t => state.favorites.includes(t.id))
+    const completedTrails = state.trails.filter(t => state.completed.includes(t.id))
+
+    app.innerHTML = `
+      <div class="container">
+        <div class="top-bar">
+          <div class="lang-switcher">
+            <button class="lang-btn ${state.lang === 'en' ? 'active' : ''}" data-lang="en">
+              <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"> EN
+            </button>
+            <button class="lang-btn ${state.lang === 'it' ? 'active' : ''}" data-lang="it">
+              <img src="https://flagcdn.com/w40/it.png" alt="IT" class="flag-icon"> IT
+            </button>
+            <button class="lang-btn ${state.lang === 'de' ? 'active' : ''}" data-lang="de">
+              <img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag-icon"> DE
+            </button>
+          </div>
+
+          <div class="auth-area">
+            <button id="backToHomeBtn" class="auth-btn">← Back</button>
+            <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
+          </div>
+        </div>
+
+        <header class="profile-header">
+          <h1>👤 ${firstName} ${lastName}</h1>
+          ${city ? `<p class="profile-city">📍 ${city}</p>` : ''}
+        </header>
+
+        <!-- Statistics -->
+        <div class="stats-box">
+          <div class="stats-header">
+            <h2>Statistics</h2>
+            <select id="statsFilter">
+              <option value="all" ${state.statsFilter === 'all' ? 'selected' : ''}>All time</option>
+              <option value="year" ${state.statsFilter === 'year' ? 'selected' : ''}>This year</option>
+              <option value="month" ${state.statsFilter === 'month' ? 'selected' : ''}>This month</option>
+            </select>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">${stats.totalCompleted}</div>
+              <div class="stat-label">Trails completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${stats.totalElevation}</div>
+              <div class="stat-label">Total elevation (m)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Favorites -->
+        <div class="profile-section">
+          <h2>❤️ Favorites (${favoriteTrails.length})</h2>
+          ${favoriteTrails.length === 0 ? `
+            <div class="empty-state">No favorites yet. Heart some trails!</div>
+          ` : `
+            <div class="profile-list">
+              ${favoriteTrails.map(trail => `
+                <div class="profile-item">
+                  <div class="profile-item-info">
+                    <strong>${trail.name}</strong>
+                    <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
+                    <span>⬆️ ${trail.elevationGainM} m</span>
+                  </div>
+                  <button class="icon-btn remove-favorite-btn" data-id="${trail.id}" title="Remove from favorites">🗑️</button>
+                </div>
+              `).join('')}
+            </div>
+          `}
+        </div>
+
+        <!-- Completed -->
+        <div class="profile-section">
+          <h2>✓ Completed (${completedTrails.length})</h2>
+          ${completedTrails.length === 0 ? `
+            <div class="empty-state">No completed trails yet. Go hiking!</div>
+          ` : `
+            <div class="profile-list">
+              ${completedTrails.map(trail => `
+                <div class="profile-item">
+                  <div class="profile-item-info">
+                    <strong>${trail.name}</strong>
+                    <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
+                    <span>⬆️ ${trail.elevationGainM} m</span>
+                  </div>
+                  <button class="icon-btn remove-completed-btn" data-id="${trail.id}" title="Remove from completed">🗑️</button>
+                </div>
+              `).join('')}
+            </div>
+          `}
+        </div>
+      </div>
+    `
+    return
+  }
+
+  // ====================== HOME PAGE (existing code) ======================
   const depWeatherDesc = state.departureWeather ? getWeatherDescription(state.departureWeather.weather_code) : null
 
   const dateOptions = `
@@ -35,7 +143,36 @@ export function render() {
 
         <div class="auth-area">
           ${state.currentUser ? `
-            <span class="user-email">${state.currentUser.user_metadata?.first_name || ''} ${state.currentUser.email}</span>
+            <div class="notification-wrapper">
+              <button id="notificationBtn" class="notification-btn" title="Notifications">
+                🔔
+                ${state.unreadCount > 0 ? `<span class="notification-badge">${state.unreadCount}</span>` : ''}
+              </button>
+
+              ${state.showNotifications ? `
+                <div class="notifications-dropdown">
+                  <div class="notifications-header">
+                    <strong>Notifications</strong>
+                    ${state.unreadCount > 0 ? `<button id="markAllReadBtn" class="link-btn">Mark all as read</button>` : ''}
+                  </div>
+                  <div class="notifications-list">
+                    ${state.notifications.length === 0 ? `
+                      <div class="no-notifications">No notifications yet</div>
+                    ` : state.notifications.map(n => `
+                      <div class="notification-item ${n.is_read ? 'read' : 'unread'}" data-id="${n.id}">
+                        <div class="notification-title">${n.title}</div>
+                        <div class="notification-message">${n.message}</div>
+                        <div class="notification-time">${new Date(n.created_at).toLocaleString()}</div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+
+            <button id="profileBtn" class="auth-btn user-name-btn">
+              ${state.currentUser.user_metadata?.first_name || 'Profile'}
+            </button>
             <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
           ` : `
             <button id="loginBtn" class="auth-btn">${t('signIn')}</button>
@@ -206,13 +343,13 @@ export function render() {
               <div class="card-header">
                 <h3>${trail.name}</h3>
                 <div class="card-actions">
-                <button class="icon-btn favorite-btn ${fav ? 'active' : ''}" data-id="${trail.id}" title="Favorite">
+                  <button class="icon-btn favorite-btn ${fav ? 'active' : ''}" data-id="${trail.id}" title="Favorite">
                     ${fav ? '❤️' : '🤍'}
-                </button>
-                <button class="icon-btn done-btn ${isCompleted(trail.id) ? 'active' : ''}" data-id="${trail.id}" title="Mark as done">
-                ✓
-                </button>
-                <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
+                  </button>
+                  <button class="icon-btn done-btn ${isCompleted(trail.id) ? 'active' : ''}" data-id="${trail.id}" title="Mark as done">
+                    ✓
+                  </button>
+                  <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
                 </div>
               </div>
               <div class="trail-meta">

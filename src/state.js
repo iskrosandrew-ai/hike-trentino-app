@@ -1,4 +1,5 @@
 export const state = {
+
     // Trails
     trails: [],
     trailsLoading: true,
@@ -56,5 +57,14 @@ export const state = {
   
     // Favorites & Completed (for later)
     favorites: [],
-    completed: []
+    completed: [],
+
+    // Notifications
+    notifications: [],
+    unreadCount: 0,
+    showNotifications: false,
+
+  currentPage: 'home',      // 'home' | 'profile'
+  statsFilter: 'all'        // 'all' | 'year' | 'month'
   }
+
