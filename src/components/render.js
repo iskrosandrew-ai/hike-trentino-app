@@ -40,37 +40,45 @@ export function render() {
         </div>
 
         <header class="profile-header">
-          <h1>👤 ${firstName} ${lastName}</h1>
-          ${city ? `<p class="profile-city">📍 ${city}</p>` : ''}
+          <h1>${firstName} ${lastName}</h1>
+          ${city ? `<p class="profile-city">${city}</p>` : ''}
         </header>
 
-        <!-- Statistics -->
         <div class="stats-box">
-          <div class="stats-header">
-            <h2>Statistics</h2>
-            <select id="statsFilter">
-              <option value="all" ${state.statsFilter === 'all' ? 'selected' : ''}>All time</option>
-              <option value="year" ${state.statsFilter === 'year' ? 'selected' : ''}>This year</option>
-              <option value="month" ${state.statsFilter === 'month' ? 'selected' : ''}>This month</option>
-            </select>
+        <div class="stats-header">
+          <h2>Statistics</h2>
+        </div>
+      
+        <div class="stats-date-range" style="display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+          <div>
+            <label style="font-size:0.85rem; color:#64748b;">From</label>
+            <input type="date" id="statsFrom" value="${state.statsFrom}" style="display:block; margin-top:4px;">
           </div>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-number">${stats.totalCompleted}</div>
-              <div class="stat-label">Trails completed</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">${stats.totalElevation}</div>
-              <div class="stat-label">Total elevation (m)</div>
-            </div>
+          <div>
+            <label style="font-size:0.85rem; color:#64748b;">To</label>
+            <input type="date" id="statsTo" value="${state.statsTo}" style="display:block; margin-top:4px;">
+          </div>
+          <div style="align-self:flex-end;">
+            <button id="clearStatsDates" class="reset-btn" style="padding:6px 12px; font-size:0.85rem;">Clear</button>
           </div>
         </div>
+      
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">${stats.totalCompleted}</div>
+            <div class="stat-label">Trails completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${stats.totalElevation}</div>
+            <div class="stat-label">Total elevation (m)</div>
+          </div>
+        </div>
+      </div>
 
-        <!-- Favorites -->
         <div class="profile-section">
-          <h2>❤️ Favorites (${favoriteTrails.length})</h2>
+          <h2>Favorites (${favoriteTrails.length})</h2>
           ${favoriteTrails.length === 0 ? `
-            <div class="empty-state">No favorites yet. Heart some trails!</div>
+            <div class="empty-state">No favorites yet.</div>
           ` : `
             <div class="profile-list">
               ${favoriteTrails.map(trail => `
@@ -78,41 +86,54 @@ export function render() {
                   <div class="profile-item-info">
                     <strong>${trail.name}</strong>
                     <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
-                    <span>⬆️ ${trail.elevationGainM} m</span>
+                    <span>${trail.elevationGainM} m</span>
                   </div>
-                  <button class="icon-btn remove-favorite-btn" data-id="${trail.id}" title="Remove from favorites">🗑️</button>
+                  <button class="icon-btn remove-favorite-btn" data-id="${trail.id}">✕</button>
                 </div>
               `).join('')}
             </div>
           `}
         </div>
 
-        <!-- Completed -->
         <div class="profile-section">
-          <h2>✓ Completed (${completedTrails.length})</h2>
-          ${completedTrails.length === 0 ? `
-            <div class="empty-state">No completed trails yet. Go hiking!</div>
-          ` : `
-            <div class="profile-list">
-              ${completedTrails.map(trail => `
-                <div class="profile-item">
+        <h2>Completed (${completedTrails.length})</h2>
+        ${completedTrails.length === 0 ? `
+          <div class="empty-state">No completed trails yet.</div>
+        ` : `
+          <div class="profile-list">
+            ${completedTrails.map(trail => {
+              const detail = (state.completedDetails || []).find(d => d.trail_id === trail.id)
+              const completedDate = detail?.completed_at || ''
+              const note = detail?.note || ''
+      
+              return `
+                <div class="profile-item completed-item">
                   <div class="profile-item-info">
-                    <strong>${trail.name}</strong>
-                    <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
-                    <span>⬆️ ${trail.elevationGainM} m</span>
+                    <div>
+                      <strong>${trail.name}</strong>
+                      <span class="diff-label diff-${trail.difficulty}" style="margin-left:8px">
+                        ${difficultyLabel(trail.difficulty)}
+                      </span>
+                    </div>
+                    <div class="completed-meta">
+                      ${completedDate ? `<span class="completed-date">${completedDate}</span>` : ''}
+                      <span>${trail.elevationGainM} m</span>
+                    </div>
+                    ${note ? `<div class="completed-note">${note}</div>` : ''}
                   </div>
-                  <button class="icon-btn remove-completed-btn" data-id="${trail.id}" title="Remove from completed">🗑️</button>
+                  <button class="icon-btn remove-completed-btn" data-id="${trail.id}">✕</button>
                 </div>
-              `).join('')}
-            </div>
-          `}
-        </div>
+              `
+            }).join('')}
+          </div>
+        `}
+      </div>
       </div>
     `
     return
   }
 
-  // ====================== HOME PAGE (existing code) ======================
+  // ====================== HOME PAGE ======================
   const depWeatherDesc = state.departureWeather ? getWeatherDescription(state.departureWeather.weather_code) : null
 
   const dateOptions = `
@@ -144,7 +165,7 @@ export function render() {
         <div class="auth-area">
           ${state.currentUser ? `
             <div class="notification-wrapper">
-              <button id="notificationBtn" class="notification-btn" title="Notifications">
+              <button id="notificationBtn" class="notification-btn">
                 🔔
                 ${state.unreadCount > 0 ? `<span class="notification-badge">${state.unreadCount}</span>` : ''}
               </button>
@@ -170,7 +191,7 @@ export function render() {
               ` : ''}
             </div>
 
-            <button id="profileBtn" class="auth-btn user-name-btn">
+            <button id="profileBtn" class="auth-btn">
               ${state.currentUser.user_metadata?.first_name || 'Profile'}
             </button>
             <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
@@ -194,7 +215,7 @@ export function render() {
       ${state.showAuthModal ? `
         <div class="auth-modal-overlay">
           <div class="auth-modal">
-            <button id="closeAuthModal" class="close-modal">✕</button>
+            <button id="closeAuthModal" class="close-modal">×</button>
             
             <h2>
               ${state.authMode === 'login' ? t('signIn') : 
@@ -213,7 +234,37 @@ export function render() {
             <input type="email" id="authEmail" placeholder="${t('email')} *" value="${state.authEmail}">
             
             ${state.authMode !== 'forgot' ? `
-              <input type="password" id="authPassword" placeholder="${t('password')} *" value="${state.authPassword}">
+              <div class="password-field">
+                <input 
+                  type="${state.showPassword ? 'text' : 'password'}" 
+                  id="authPassword" 
+                  placeholder="${t('password')} *" 
+                  value="${state.authPassword}"
+                >
+                <button type="button" id="togglePassword" class="toggle-password" title="Show/Hide password">
+                  ${state.showPassword 
+                    ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                         <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                         <line x1="1" y1="1" x2="23" y2="23"/>
+                       </svg>`
+                    : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                         <circle cx="12" cy="12" r="3"/>
+                       </svg>`
+                  }
+                </button>
+              </div>
+            ` : ''}
+
+            ${state.authMode === 'signup' ? `
+              <div class="password-field">
+                <input 
+                  type="${state.showPassword ? 'text' : 'password'}" 
+                  id="authPasswordConfirm" 
+                  placeholder="Confirm password *" 
+                  value="${state.authPasswordConfirm}"
+                >
+              </div>
             ` : ''}
 
             ${state.authError ? `<div class="auth-error">${state.authError}</div>` : ''}
@@ -343,10 +394,10 @@ export function render() {
               <div class="card-header">
                 <h3>${trail.name}</h3>
                 <div class="card-actions">
-                  <button class="icon-btn favorite-btn ${fav ? 'active' : ''}" data-id="${trail.id}" title="Favorite">
+                  <button class="icon-btn favorite-btn ${fav ? 'active' : ''}" data-id="${trail.id}">
                     ${fav ? '❤️' : '🤍'}
                   </button>
-                  <button class="icon-btn done-btn ${isCompleted(trail.id) ? 'active' : ''}" data-id="${trail.id}" title="Mark as done">
+                  <button class="icon-btn done-btn ${isCompleted(trail.id) ? 'active' : ''}" data-id="${trail.id}">
                     ✓
                   </button>
                   <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
@@ -376,6 +427,26 @@ export function render() {
         <strong>${t('credits')}</strong><br>
         ${t('weatherSource')}
       </footer>
+
+      ${state.showCompletedModal ? `
+      <div class="auth-modal-overlay">
+        <div class="auth-modal">
+          <button id="closeCompletedModal" class="close-modal">×</button>
+          <h2>${t('markAsDone')}</h2>
+    
+          <label>${t('date')}</label>
+          <input type="date" id="completedDate" value="${state.completedDate}">
+    
+          <label style="margin-top:12px;display:block">${t('noteOptional')}</label>
+          <textarea id="completedNote" rows="3" placeholder="${t('notePlaceholder')}">${state.completedNote}</textarea>
+    
+          <div style="display:flex;gap:10px;margin-top:20px">
+            <button id="saveCompletedBtn" class="search-btn" style="flex:1">${t('save')}</button>
+            <button id="cancelCompletedBtn" class="reset-btn" style="flex:1">${t('cancel')}</button>
+          </div>
+        </div>
+      </div>
+    ` : ''}
     </div>
   `
 }

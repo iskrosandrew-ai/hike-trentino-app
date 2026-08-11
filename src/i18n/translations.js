@@ -60,7 +60,13 @@ export const translations = {
       sendResetLink: "Send reset link",
       backToLogin: "Back to Sign in",
       loadingTrails: "Loading trails from database...",
-      loginRequired: "Please sign in to use this feature"
+      loginRequired: "Please sign in to use this feature",
+      markAsDone: 'Mark as Done',
+      date: 'Date',
+      noteOptional: 'Note (optional)',
+      notePlaceholder: 'How was the hike? Any tips?',
+      save: 'Save',
+      cancel: 'Cancel'
     },
     it: {
       title: "Hike Trentino",
@@ -123,7 +129,13 @@ export const translations = {
       sendResetLink: "Invia link di reset",
       backToLogin: "Torna al login",
       loadingTrails: "Caricamento sentieri dal database...",
-      loginRequired: "Accedi per usare questa funzione"
+      loginRequired: "Accedi per usare questa funzione",
+      markAsDone: 'Segna come completato',
+      date: 'Data',
+      noteOptional: 'Nota (opzionale)',
+      notePlaceholder: 'Com\'è stata l\'escursione? Qualche consiglio?',
+      save: 'Salva',
+      cancel: 'Annulla',
     },
     de: {
       title: "Hike Trentino",
@@ -186,6 +198,12 @@ export const translations = {
       sendResetLink: "Reset-Link senden",
       backToLogin: "Zurück zum Login",
       loadingTrails: "Wanderwege werden aus der Datenbank geladen...",
-      loginRequired: "Bitte melde dich an, um diese Funktion zu nutzen"
+      loginRequired: "Bitte melde dich an, um diese Funktion zu nutzen",
+      markAsDone: 'Als erledigt markieren',
+      date: 'Datum',
+      noteOptional: 'Notiz (optional)',
+      notePlaceholder: 'Wie war die Wanderung? Tipps?',
+      save: 'Speichern',
+      cancel: 'Abbrechen'
     }
   }

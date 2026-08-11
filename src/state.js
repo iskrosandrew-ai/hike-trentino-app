@@ -20,6 +20,8 @@ export const state = {
     authError: '',
     authLoading: false,
     authMessage: '',
+    authPasswordConfirm: '',
+    showPassword: false,
   
     // Filters
     filters: {
@@ -55,16 +57,27 @@ export const state = {
     weatherCache: {},
     distanceCache: {},
   
-    // Favorites & Completed (for later)
+    // Favorites & Completed 
     favorites: [],
     completed: [],
+    completedDetails: [],
+
+    showCompletedModal: false,
+    completedTrailId: null,
+    completedDate: '',
+    completedNote: '',
 
     // Notifications
     notifications: [],
     unreadCount: 0,
     showNotifications: false,
 
+    statsFrom: '',
+    statsTo: '',
+
+
   currentPage: 'home',      // 'home' | 'profile'
   statsFilter: 'all'        // 'all' | 'year' | 'month'
+  
   }
 

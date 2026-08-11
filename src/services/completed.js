@@ -9,7 +9,7 @@ export async function loadCompleted() {
 
   const { data, error } = await supabase
     .from('completed_trails')
-    .select('trail_id')
+    .select('trail_id, completed_at, note')
     .eq('user_id', state.currentUser.id)
 
   if (error) {
@@ -19,17 +19,21 @@ export async function loadCompleted() {
   }
 
   state.completed = data.map(c => c.trail_id)
+  // We keep the full data for later if needed
+  state.completedDetails = data || []
 }
 
-export async function toggleCompleted(trailId) {
+export function isCompleted(trailId) {
+  return state.completed.includes(trailId)
+}
+
+export async function openCompletedModal(trailId) {
   if (!state.currentUser) {
     return { needsLogin: true }
   }
 
-  const isDone = state.completed.includes(trailId)
-
-  if (isDone) {
-    // Remove from completed
+  // If already completed → just remove it
+  if (state.completed.includes(trailId)) {
     const { error } = await supabase
       .from('completed_trails')
       .delete()
@@ -42,27 +46,43 @@ export async function toggleCompleted(trailId) {
     }
 
     state.completed = state.completed.filter(id => id !== trailId)
-  } else {
-    // Add to completed
-    const { error } = await supabase
-      .from('completed_trails')
-      .insert({
-        user_id: state.currentUser.id,
-        trail_id: trailId,
-        completed_at: new Date().toISOString().slice(0, 10)
-      })
-
-    if (error) {
-      console.error('Error adding completed trail:', error)
-      return { error: true }
-    }
-
-    state.completed.push(trailId)
+    return { success: true, removed: true }
   }
 
+  // Not completed yet → open the modal
+  state.completedTrailId = trailId
+  state.completedDate = new Date().toISOString().slice(0, 10) // today
+  state.completedNote = ''
+  state.showCompletedModal = true
+  return { success: true, openModal: true }
+}
+
+export async function saveCompleted() {
+  if (!state.currentUser || !state.completedTrailId) return { error: true }
+
+  const { error } = await supabase
+    .from('completed_trails')
+    .insert({
+      user_id: state.currentUser.id,
+      trail_id: state.completedTrailId,
+      completed_at: state.completedDate,
+      note: state.completedNote.trim() || null
+    })
+
+  if (error) {
+    console.error('Error saving completed trail:', error)
+    return { error: true }
+  }
+
+  state.completed.push(state.completedTrailId)
+  state.showCompletedModal = false
+  state.completedTrailId = null
+  state.completedNote = ''
   return { success: true }
 }
 
-export function isCompleted(trailId) {
-  return state.completed.includes(trailId)
+export function closeCompletedModal() {
+  state.showCompletedModal = false
+  state.completedTrailId = null
+  state.completedNote = ''
 }

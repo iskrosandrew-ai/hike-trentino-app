@@ -4,13 +4,41 @@ import { loadTrails } from './services/trails.js'
 import { checkUser, handleLogin, handleSignup, handleForgotPassword, handleLogout, resetAuthForm } from './services/auth.js'
 import { doSearch, fetchSuggestions, selectPlace } from './services/search.js'
 import { loadFavorites, toggleFavorite } from './services/favorites.js'
-import { loadCompleted, toggleCompleted } from './services/completed.js'
+import { loadCompleted, openCompletedModal, saveCompleted, closeCompletedModal } from './services/completed.js'
 import { loadNotifications, markAsRead, markAllAsRead } from './services/notifications.js'
 import { render } from './components/render.js'
 import { t } from './utils/helpers.js'
 import { trackEvent } from './services/analytics.js'
 
-// ---------- Event binding ----------
+// Password show/hide – attached only once
+document.addEventListener('click', function handlePasswordToggle(e) {
+  if (e.target.closest('#togglePassword')) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    state.showPassword = !state.showPassword
+
+    const passwordInput = document.getElementById('authPassword')
+    const confirmInput = document.getElementById('authPasswordConfirm')
+    const btn = document.getElementById('togglePassword')
+
+    if (passwordInput) passwordInput.type = state.showPassword ? 'text' : 'password'
+    if (confirmInput) confirmInput.type = state.showPassword ? 'text' : 'password'
+
+    if (btn) {
+      btn.innerHTML = state.showPassword
+        ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+             <line x1="1" y1="1" x2="23" y2="23"/>
+           </svg>`
+        : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+             <circle cx="12" cy="12" r="3"/>
+           </svg>`
+    }
+  }
+})
+
 function bindEvents() {
   // Language
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -61,7 +89,7 @@ function bindEvents() {
     }
   })
 
-  // Go to Profile page
+  // Profile
   const profileBtn = document.getElementById('profileBtn')
   if (profileBtn) {
     profileBtn.addEventListener('click', () => {
@@ -72,7 +100,6 @@ function bindEvents() {
     })
   }
 
-  // Back to Home from Profile
   const backToHomeBtn = document.getElementById('backToHomeBtn')
   if (backToHomeBtn) {
     backToHomeBtn.addEventListener('click', () => {
@@ -81,6 +108,35 @@ function bindEvents() {
       bindEvents()
     })
   }
+
+    // Stats date range
+    const statsFromEl = document.getElementById('statsFrom')
+    if (statsFromEl) {
+      statsFromEl.addEventListener('change', (e) => {
+        state.statsFrom = e.target.value
+        render()
+        bindEvents()
+      })
+    }
+
+    const statsToEl = document.getElementById('statsTo')
+    if (statsToEl) {
+      statsToEl.addEventListener('change', (e) => {
+        state.statsTo = e.target.value
+        render()
+        bindEvents()
+      })
+    }
+
+    const clearStatsDatesBtn = document.getElementById('clearStatsDates')
+    if (clearStatsDatesBtn) {
+      clearStatsDatesBtn.addEventListener('click', () => {
+        state.statsFrom = ''
+        state.statsTo = ''
+        render()
+        bindEvents()
+      })
+    }
 
   // Stats filter
   const statsFilterEl = document.getElementById('statsFilter')
@@ -92,23 +148,20 @@ function bindEvents() {
     })
   }
 
-  // Remove from favorites (Profile page)
+  // Remove from favorites / completed
   document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation()
-      const trailId = Number(btn.dataset.id)
-      await toggleFavorite(trailId)
+      await toggleFavorite(Number(btn.dataset.id))
       render()
       bindEvents()
     })
   })
 
-  // Remove from completed (Profile page)
   document.querySelectorAll('.remove-completed-btn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation()
-      const trailId = Number(btn.dataset.id)
-      await toggleCompleted(trailId)
+      await toggleCompleted(Number(btn.dataset.id))
       render()
       bindEvents()
     })
@@ -187,15 +240,11 @@ function bindEvents() {
       else if (state.authMode === 'signup') success = await handleSignup()
       else success = await handleForgotPassword()
 
-      if (success) {
-        if (state.authMode === 'login') {
-          trackEvent('login')
-          await loadFavorites()
-          await loadCompleted()
-          await loadNotifications()
-        } else if (state.authMode === 'signup') {
-          trackEvent('signup')
-        }
+      if (success && state.authMode === 'login') {
+        trackEvent('login')
+        await loadFavorites()
+        await loadCompleted()
+        await loadNotifications()
       }
 
       render()
@@ -204,12 +253,13 @@ function bindEvents() {
   }
 
   // Auth inputs
-  ;['authEmail', 'authPassword', 'authFirstName', 'authLastName', 'authCity'].forEach(id => {
+  ;['authEmail', 'authPassword', 'authPasswordConfirm', 'authFirstName', 'authLastName', 'authCity'].forEach(id => {
     const el = document.getElementById(id)
     if (el) {
       el.addEventListener('input', (e) => {
         if (id === 'authEmail') state.authEmail = e.target.value
         if (id === 'authPassword') state.authPassword = e.target.value
+        if (id === 'authPasswordConfirm') state.authPasswordConfirm = e.target.value
         if (id === 'authFirstName') state.authFirstName = e.target.value
         if (id === 'authLastName') state.authLastName = e.target.value
         if (id === 'authCity') state.authCity = e.target.value
@@ -318,10 +368,8 @@ function bindEvents() {
   document.querySelectorAll('.trail-card').forEach(card => {
     card.addEventListener('click', (e) => {
       if (e.target.closest('.favorite-btn') || e.target.closest('.done-btn')) return
-
       const trailId = Number(card.dataset.id)
       trackEvent('trail_clicked', { trail_id: trailId })
-
       if (card.dataset.url) window.open(card.dataset.url, '_blank')
     })
   })
@@ -342,12 +390,6 @@ function bindEvents() {
         return
       }
 
-      if (result.success) {
-        trackEvent(state.favorites.includes(trailId) ? 'favorite_added' : 'favorite_removed', {
-          trail_id: trailId
-        })
-      }
-
       render()
       bindEvents()
     })
@@ -358,7 +400,8 @@ function bindEvents() {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation()
       const trailId = Number(btn.dataset.id)
-      const result = await toggleCompleted(trailId)
+
+      const result = await openCompletedModal(trailId)
 
       if (result.needsLogin) {
         alert(t('loginRequired'))
@@ -369,16 +412,54 @@ function bindEvents() {
         return
       }
 
-      if (result.success) {
-        trackEvent(state.completed.includes(trailId) ? 'trail_completed' : 'trail_uncompleted', {
-          trail_id: trailId
-        })
-      }
-
       render()
       bindEvents()
     })
   })
+
+  // Completed modal events
+  const closeCompletedModalBtn = document.getElementById('closeCompletedModal')
+  if (closeCompletedModalBtn) {
+    closeCompletedModalBtn.addEventListener('click', () => {
+      closeCompletedModal()
+      render()
+      bindEvents()
+    })
+  }
+
+  const cancelCompletedBtn = document.getElementById('cancelCompletedBtn')
+  if (cancelCompletedBtn) {
+    cancelCompletedBtn.addEventListener('click', () => {
+      closeCompletedModal()
+      render()
+      bindEvents()
+    })
+  }
+
+  const saveCompletedBtn = document.getElementById('saveCompletedBtn')
+  if (saveCompletedBtn) {
+    saveCompletedBtn.addEventListener('click', async () => {
+      const result = await saveCompleted()
+      if (result.success) {
+        render()
+        bindEvents()
+      }
+    })
+  }
+
+  const completedDateEl = document.getElementById('completedDate')
+  if (completedDateEl) {
+    completedDateEl.addEventListener('change', (e) => {
+      state.completedDate = e.target.value
+    })
+  }
+
+  const completedNoteEl = document.getElementById('completedNote')
+  if (completedNoteEl) {
+    completedNoteEl.addEventListener('input', (e) => {
+      state.completedNote = e.target.value
+    })
+  }
 
   updateSuggestionsOnly()
 }
@@ -409,7 +490,6 @@ function updateSuggestionsOnly() {
   }
 }
 
-// ---------- Start the app ----------
 async function init() {
   await loadTrails()
   await checkUser()
@@ -422,7 +502,6 @@ async function init() {
 
   render()
   bindEvents()
-
   trackEvent('app_opened')
 }
 

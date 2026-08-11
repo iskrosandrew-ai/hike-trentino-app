@@ -790,3 +790,64 @@ input:focus {
 .user-name-btn {
   font-weight: 600;
 }
+
+.password-field {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.toggle-password:hover {
+  color: #0f172a;
+}
+
+.toggle-password svg {
+  display: block;
+
+}
+
+.completed-item {
+  align-items: flex-start;
+}
+
+.completed-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.completed-date {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.completed-note {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #475569;
+  font-style: italic;
+  background: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 6px;
+}

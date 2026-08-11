@@ -35,6 +35,16 @@ export async function handleSignup() {
     return false
   }
 
+  if (state.authPassword !== state.authPasswordConfirm) {
+    state.authError = 'Passwords do not match'
+    return false
+  }
+
+  if (state.authPassword.length < 6) {
+    state.authError = 'Password must be at least 6 characters'
+    return false
+  }
+
   state.authLoading = true
   state.authError = ''
   state.authMessage = ''
@@ -47,7 +57,8 @@ export async function handleSignup() {
         first_name: state.authFirstName.trim(),
         last_name: state.authLastName.trim(),
         city: state.authCity.trim() || null
-      }
+      },
+      emailRedirectTo: window.location.origin   // ← this is the important line
     }
   })
 
@@ -58,7 +69,7 @@ export async function handleSignup() {
     return false
   }
 
-  state.authMessage = 'Account created! Please check your email to confirm.'
+  state.authMessage = 'Account created! Please check your email and click the confirmation link.'
   state.authMode = 'login'
   return true
 }
@@ -98,9 +109,11 @@ export async function handleLogout() {
 export function resetAuthForm() {
   state.authEmail = ''
   state.authPassword = ''
+  state.authPasswordConfirm = ''
   state.authFirstName = ''
   state.authLastName = ''
   state.authCity = ''
   state.authError = ''
   state.authMessage = ''
+  state.showPassword = false
 }
