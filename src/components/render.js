@@ -7,98 +7,98 @@ import { getCompletedStats } from '../services/profile.js'
 export function render() {
   const app = document.querySelector('#app')
 
-  // ====================== PROFILE PAGE ======================
-  if (state.currentPage === 'profile') {
-    const stats = getCompletedStats()
-    const user = state.currentUser
-    const firstName = user?.user_metadata?.first_name || ''
-    const lastName = user?.user_metadata?.last_name || ''
-    const city = user?.user_metadata?.city || ''
+// ====================== PROFILE PAGE ======================
+if (state.currentPage === 'profile') {
+  const stats = getCompletedStats()
+  const user = state.currentUser
+  const firstName = user?.user_metadata?.first_name || ''
+  const lastName = user?.user_metadata?.last_name || ''
+  const city = user?.user_metadata?.city || ''
 
-    const favoriteTrails = state.trails.filter(t => state.favorites.includes(t.id))
-    const completedTrails = state.trails.filter(t => state.completed.includes(t.id))
+  const favoriteTrails = state.trails.filter(t => state.favorites.includes(t.id))
+  const completedTrails = state.trails.filter(t => state.completed.includes(t.id))
 
-    app.innerHTML = `
-      <div class="container">
-        <div class="top-bar">
-          <div class="lang-switcher">
-            <button class="lang-btn ${state.lang === 'en' ? 'active' : ''}" data-lang="en">
-              <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"> EN
-            </button>
-            <button class="lang-btn ${state.lang === 'it' ? 'active' : ''}" data-lang="it">
-              <img src="https://flagcdn.com/w40/it.png" alt="IT" class="flag-icon"> IT
-            </button>
-            <button class="lang-btn ${state.lang === 'de' ? 'active' : ''}" data-lang="de">
-              <img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag-icon"> DE
-            </button>
-          </div>
-
-          <div class="auth-area">
-            <button id="backToHomeBtn" class="auth-btn">← Back</button>
-            <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
-          </div>
+  app.innerHTML = `
+    <div class="container">
+      <div class="top-bar">
+        <div class="lang-switcher">
+          <button class="lang-btn ${state.lang === 'en' ? 'active' : ''}" data-lang="en">
+            <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="flag-icon"> EN
+          </button>
+          <button class="lang-btn ${state.lang === 'it' ? 'active' : ''}" data-lang="it">
+            <img src="https://flagcdn.com/w40/it.png" alt="IT" class="flag-icon"> IT
+          </button>
+          <button class="lang-btn ${state.lang === 'de' ? 'active' : ''}" data-lang="de">
+            <img src="https://flagcdn.com/w40/de.png" alt="DE" class="flag-icon"> DE
+          </button>
         </div>
 
-        <header class="profile-header">
-          <h1>${firstName} ${lastName}</h1>
-          ${city ? `<p class="profile-city">${city}</p>` : ''}
-        </header>
+        <div class="auth-area">
+          <button id="backToHomeBtn" class="auth-btn">${t('back')}</button>
+          <button id="logoutBtn" class="auth-btn">${t('logout')}</button>
+        </div>
+      </div>
 
-        <div class="stats-box">
+      <header class="profile-header">
+        <h1>${firstName} ${lastName}</h1>
+        ${city ? `<p class="profile-city">${city}</p>` : ''}
+      </header>
+
+      <div class="stats-box">
         <div class="stats-header">
-          <h2>Statistics</h2>
+          <h2>${t('statistics')}</h2>
         </div>
-      
+    
         <div class="stats-date-range" style="display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
           <div>
-            <label style="font-size:0.85rem; color:#64748b;">From</label>
+            <label style="font-size:0.85rem; color:#64748b;">${t('from')}</label>
             <input type="date" id="statsFrom" value="${state.statsFrom}" style="display:block; margin-top:4px;">
           </div>
           <div>
-            <label style="font-size:0.85rem; color:#64748b;">To</label>
+            <label style="font-size:0.85rem; color:#64748b;">${t('to')}</label>
             <input type="date" id="statsTo" value="${state.statsTo}" style="display:block; margin-top:4px;">
           </div>
           <div style="align-self:flex-end;">
-            <button id="clearStatsDates" class="reset-btn" style="padding:6px 12px; font-size:0.85rem;">Clear</button>
+            <button id="clearStatsDates" class="reset-btn" style="padding:6px 12px; font-size:0.85rem;">${t('clear')}</button>
           </div>
         </div>
-      
+    
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-number">${stats.totalCompleted}</div>
-            <div class="stat-label">Trails completed</div>
+            <div class="stat-label">${t('trailsCompleted')}</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">${stats.totalElevation}</div>
-            <div class="stat-label">Total elevation (m)</div>
+            <div class="stat-label">${t('totalElevation')}</div>
           </div>
         </div>
       </div>
 
-        <div class="profile-section">
-          <h2>Favorites (${favoriteTrails.length})</h2>
-          ${favoriteTrails.length === 0 ? `
-            <div class="empty-state">No favorites yet.</div>
-          ` : `
-            <div class="profile-list">
-              ${favoriteTrails.map(trail => `
-                <div class="profile-item">
-                  <div class="profile-item-info">
-                    <strong>${trail.name}</strong>
-                    <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
-                    <span>${trail.elevationGainM} m</span>
-                  </div>
-                  <button class="icon-btn remove-favorite-btn" data-id="${trail.id}">✕</button>
+      <div class="profile-section">
+        <h2>${t('favorites')} (${favoriteTrails.length})</h2>
+        ${favoriteTrails.length === 0 ? `
+          <div class="empty-state">${t('noFavoritesYet')}</div>
+        ` : `
+          <div class="profile-list">
+            ${favoriteTrails.map(trail => `
+              <div class="profile-item">
+                <div class="profile-item-info">
+                  <strong>${trail.name}</strong>
+                  <span class="diff-label diff-${trail.difficulty}">${difficultyLabel(trail.difficulty)}</span>
+                  <span>${trail.elevationGainM} m</span>
                 </div>
-              `).join('')}
-            </div>
-          `}
-        </div>
+                <button class="icon-btn remove-favorite-btn" data-id="${trail.id}">✕</button>
+              </div>
+            `).join('')}
+          </div>
+        `}
+      </div>
 
-        <div class="profile-section">
-        <h2>Completed (${completedTrails.length})</h2>
+      <div class="profile-section">
+        <h2>${t('completed')} (${completedTrails.length})</h2>
         ${completedTrails.length === 0 ? `
-          <div class="empty-state">No completed trails yet.</div>
+          <div class="empty-state">${t('noCompletedYet')}</div>
         ` : `
           <div class="profile-list">
             ${completedTrails.map(trail => {
@@ -128,10 +128,10 @@ export function render() {
           </div>
         `}
       </div>
-      </div>
-    `
-    return
-  }
+    </div>
+  `
+  return
+}
 
   // ====================== HOME PAGE ======================
   const depWeatherDesc = state.departureWeather ? getWeatherDescription(state.departureWeather.weather_code) : null
@@ -424,9 +424,9 @@ export function render() {
       </div>
 
       <footer class="credits">
-        <strong>${t('credits')}</strong><br>
-        ${t('weatherSource')}
-      </footer>
+      <strong>${t('credits')}</strong><br>
+      ${t('weatherSource')}
+    </footer>
 
       ${state.showCompletedModal ? `
       <div class="auth-modal-overlay">

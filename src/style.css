@@ -851,3 +851,135 @@ input:focus {
   padding: 6px 10px;
   border-radius: 6px;
 }
+
+/* ========== MOBILE IMPROVEMENTS ========== */
+
+@media (max-width: 768px) {
+
+  /* Top bar */
+  .top-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .lang-switcher {
+    justify-content: center;
+  }
+
+  .auth-area {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Filters */
+  .filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+    min-width: 100% !important;
+  }
+
+  .filter-group input,
+  .filter-group select {
+    width: 100%;
+  }
+
+  /* Search / Reset buttons */
+  .filter-group[style*="align-self"] {
+    width: 100%;
+  }
+
+  .search-btn,
+  .reset-btn {
+    width: 100%;
+  }
+
+  /* Trail cards */
+  .trail-card {
+    padding: 16px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .card-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Auth Modal */
+  .auth-modal {
+    width: 92%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .auth-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Notifications dropdown */
+  .notifications-dropdown {
+    width: 90vw;
+    right: 5vw;
+    left: 5vw;
+  }
+
+  /* Profile page */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-date-range {
+    flex-direction: column;
+  }
+
+  .profile-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .profile-item .icon-btn {
+    align-self: flex-end;
+  }
+
+  /* Selected place bar */
+  .selected-place-bar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  /* Weather bar */
+  .weather-info {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  .container {
+    padding: 12px;
+  }
+
+  .lang-btn {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+
+  .auth-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
