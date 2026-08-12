@@ -3,7 +3,7 @@
 A web app that helps you discover and plan hiking trails in Trentino (Italy).  
 It combines a curated list of trails with weather forecasts and smart recommendations so you can pick the best hike for a given day.
 
-**Live demo**: [https://hike-trentino-app-andy.vercel.app/]  
+**Live demo**: [https://hike-trentino-app-andy.vercel.app]  
 **Source of trail data**: [Visit Trentino – Trekking](https://www.visittrentino.info/it/guida/attivita-outdoor/trekking)
 
 ---
